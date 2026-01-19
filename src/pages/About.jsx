@@ -157,6 +157,48 @@ const About = () => {
       <div className="bg-black/30">
         <VisionMission />
       </div>
+      
+      {/* Core Technologies & Approach (new) */}
+      <section className="py-16 bg-transparent relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <motion.div initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} className="w-12 h-1 bg-cyan-400 mb-6 mx-auto" />
+            <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Our Technology</span>
+            <h3 className="text-3xl md:text-4xl font-black mb-4">Core Technologies & Approach</h3>
+            <p className="text-gray-400 max-w-3xl mx-auto">
+              We design and deploy end‑to‑end IoT ecosystems built for industrial scale and reliability: hardened edge devices, secure cloud pipelines, and production‑grade analytics. Our approach pairs lightweight, low‑latency telemetry with robust data governance so customers gain real‑time insights while maintaining operational security and predictable ROI.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Milestones / Our Journey (new) */}
+      <section className="py-16 bg-transparent relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <motion.div initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} className="w-12 h-1 bg-cyan-400 mb-6 mx-auto" />
+            <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Milestones</span>
+            <h3 className="text-3xl md:text-4xl font-black mb-4">Our Journey</h3>
+            <p className="text-gray-400 max-w-3xl mx-auto">
+              Since 2018 we've moved from prototype edge modules to region‑wide production networks—initial field pilots, first commercial deployments, regional expansion, and the addition of predictive AI services. Each milestone reflects measurable improvements in uptime, throughput, or cost‑per‑unit for our partners and frames how we scale practical automation projects.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Awards & Impact / Sustainability (new) */}
+      <section className="py-12 bg-transparent relative z-10">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-8">
+            <motion.div initial={{ opacity: 0, scale: 0.6 }} whileInView={{ opacity: 1, scale: 1 }} className="w-12 h-1 bg-cyan-400 mb-6 mx-auto" />
+            <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-3">Impact</span>
+            <h4 className="text-3xl md:text-3xl font-black mb-3">Awards & Sustainability</h4>
+            <p className="text-gray-400 max-w-3xl mx-auto">
+              Our engineering choices prioritize efficiency and longevity: energy‑smart sensors, software updates that extend device life, and secure data minimization practices. These decisions reduce operational waste and total cost of ownership for customers while helping industrial operators meet tougher sustainability targets.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <OurValuesSection />
       
