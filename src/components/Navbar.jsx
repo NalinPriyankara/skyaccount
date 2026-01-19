@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import SkyLogo from "../assets/Logo/Final-bakrmvd.png"
 
@@ -46,29 +47,29 @@ const Navbar = () => {
 
           {/* LOGO */}
           <div className="flex items-center gap-3">
-             <a href="/" className="block relative group">
+             <Link to="/" className="block relative group">
                 <img
                   src={SkyLogo}
                   alt="Sky Smart"
                   className={`object-contain transition-all duration-500 ${scrolled ? "h-7" : "h-10 md:h-12"} brightness-110`}
                 />
                 <div className="absolute inset-0 bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full -z-10" />
-             </a>
+             </Link>
           </div>
 
           {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-1 bg-transparent px-2">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
+                to={item.path}
                 className={`relative px-5 py-2 text-xs font-black uppercase tracking-widest transition-all duration-300 group ${
                    scrolled ? "text-zinc-400 hover:text-white" : "text-white/80 hover:text-white"
                 }`}
               >
                 <span className="relative z-10">{item.name}</span>
                 <motion.div className="absolute bottom-1.5 left-5 right-5 h-[1px] bg-cyan-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-300" />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -136,23 +137,21 @@ const Navbar = () => {
 
                  <nav className="flex flex-col gap-2 relative z-10">
                    {menuItems.map((item, i) => (
-                     <motion.a
+                     <motion.div
                        key={item.name}
-                       href={item.path}
                        initial={{ opacity: 0, x: 20 }}
                        animate={{ opacity: 1, x: 0 }}
                        transition={{ delay: 0.1 + (i * 0.05) }}
                        className="group p-4 rounded-xl border border-transparent hover:border-white/5 hover:bg-transparent/5 flex justify-between items-center transition-all"
-                       onClick={() => setOpen(false)}
                      >
-                        <div className="flex flex-col">
+                        <Link to={item.path} onClick={() => setOpen(false)} className="flex flex-col w-full">
                             <span className="text-2xl font-black text-white group-hover:text-cyan-400 transition-colors uppercase tracking-tight">
                                 {item.name}
                             </span>
                             <span className="text-[8px] font-mono text-white/20 tracking-[0.3em] uppercase">Sector_{item.name === "Home" ? "00" : "0" + i}</span>
-                        </div>
+                        </Link>
                        <ArrowRight size={20} className="text-cyan-500 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
-                     </motion.a>
+                     </motion.div>
                    ))}
                  </nav>
 
