@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { CalendarCheck, Rocket, Globe, Zap, Flag } from "lucide-react";
 
 const timeline = [
-  { year: "2018", title: "Genesis", text: "Founded with a vision to revolutionize industrial data monitoring.", icon: Flag },
-  { year: "2020", title: "Edge Launch", text: "First generation of ultra-low latency Edge IoT devices deployed.", icon: Rocket },
-  { year: "2022", title: "Global Scale", text: "Expansion into Southeast Asia, powering factories across 5 countries.", icon: Globe },
-  { year: "2024", title: "AI Core", text: "Integration of predictive analytics neural networks.", icon: Zap },
+  { year: "2008", title: "Genesis", text: "Founded with a vision to revolutionize industrial data monitoring.", icon: Flag },
+  { year: "2015", title: "Edge Launch", text: "First generation of ultra-low latency Edge IoT devices deployed.", icon: Rocket },
+  { year: "2020", title: "Global Scale", text: "Expansion into Southeast Asia, powering factories across 5 countries.", icon: Globe },
+  { year: "2023", title: "AI Core", text: "Integration of predictive analytics neural networks.", icon: Zap },
   { year: "2026", title: "Future Ready", text: "Next-gen autonomous factory systems & quantum security.", icon: CalendarCheck }
 ];
 

@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue } from "fram
 import { DollarSign, Zap, Target, Shield, ArrowRight, PlayCircle } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Hero_slide_1 from "../assets/Hero/Hero-slide-1.jpeg";
+import Hero_slide_1 from "../assets/Hero/ind_01.jpg";
 
 const services = [
   {
