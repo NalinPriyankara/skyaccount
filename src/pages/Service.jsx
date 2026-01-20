@@ -3,11 +3,16 @@ import {
   Layers,
   Target,
   ShieldCheck,
-  Cloud,
-  Smile,
+  Headset,
+  BrainCircuit,
   ArrowRight,
+  Cpu,
+  Code2,
+  Smartphone,
+  Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import PageCover from "../components/PageCover";
 
 /* -------------------- Animations -------------------- */
@@ -40,34 +45,34 @@ const fadeRight = {
 
 const services = [
   {
-    title: "Investment",
-    description: "Smart investment solutions for modern homes.",
-    icon: PiggyBank,
+    title: "IoT Development",
+    description: "End-to-end IoT ecosystems connecting physical assets to the digital cloud for real-time monitoring and automation.",
+    icon: Cpu,
   },
   {
-    title: "All in One",
-    description: "Everything you need in one smart system.",
-    icon: Layers,
+    title: "Software Development",
+    description: "Custom software architectures designed for scalability, security, and seamless integration with existing workflows.",
+    icon: Code2,
   },
   {
-    title: "Best Target",
-    description: "Optimized solutions for your needs.",
-    icon: Target,
+    title: "Mobile App Development",
+    description: "Intuitive, high-performance mobile applications that extend your business reach to every user's fingertips.",
+    icon: Smartphone,
   },
   {
-    title: "Safe & Secure",
-    description: "Advanced security and protection.",
-    icon: ShieldCheck,
+    title: "All Technology Solution",
+    description: "Comprehensive IT consulting and holistic technology strategies to drive innovation across your entire organization.",
+    icon: Globe,
   },
   {
-    title: "Cloud Based",
-    description: "Access your system anywhere, anytime.",
-    icon: Cloud,
+    title: "AI and Big Data",
+    description: "Create intelligent solutions leveraging artificial intelligence and big data analytics to drive informed decision-making and business growth.",
+    icon: BrainCircuit,
   },
   {
-    title: "User Friendly",
-    description: "Simple, fast, and intuitive UI.",
-    icon: Smile,
+    title: "Support & Maintenance",
+    description: "Provide 24/7, global support and technical maintenace services to ensure your systems run smoothly and efficiently.",
+    icon: Headset,
   },
 ];
 
@@ -79,7 +84,7 @@ export default function Service() {
       <link rel="canonical" href="https://skyaccount.perahara.lk/company/services" />
       {/* Page Cover */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <div className="py-20">
+        <div className="">
           <PageCover title="Services" />
         </div>
       </motion.div>
@@ -180,14 +185,15 @@ export default function Service() {
                 anywhere.
               </p>
 
-              <motion.button
+              <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-8 inline-flex items-center gap-2 px-6 py-3 border border-white rounded-full hover:bg-white hover:text-black transition"
+                // className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-transparent/5 border border-white/10 text-white rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:bg-white hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+                className="mt-8 inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] cursor-pointer"
               >
                 Read More
-                <ArrowRight size={16} />
-              </motion.button>
+                <ArrowRight size={18} className="text-cyan-400" />
+              </motion.a>
             </motion.div>
 
             {/* Image */}
@@ -209,8 +215,7 @@ export default function Service() {
         </section>
 
         {/* ================= FREE CONSULTATION CTA ================= */}
-        <section className="py-24 bg-black/50 text-white backdrop-blur-md border-t border-white/5 relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-cyan-500/50 to-transparent" />
+        <section className="py-24 bg-transparent text-white overflow-hidden">
           <motion.div
             className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-6"
             variants={fadeUp}
@@ -227,14 +232,21 @@ export default function Service() {
               </p>
             </div>
 
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-10 py-4 bg-white text-black font-black text-xs tracking-widest rounded-full hover:bg-cyan-400 transition-all uppercase"
+            > */}
+            <motion.a
+              href="/company/contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
             >
               Contact Us
-              <ArrowRight size={18} />
-            </motion.button>
+              <ArrowRight size={18} className="text-cyan-400" />
+            </motion.a>
+            {/* </motion.button> */}
           </motion.div>
         </section>
       </div>
