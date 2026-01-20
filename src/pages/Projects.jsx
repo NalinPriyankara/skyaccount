@@ -89,7 +89,7 @@ const Projects = () => {
                     </span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-                   Proven <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Integrations</span>
+                   Proven <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-3">Integrations</span>
                 </h2>
              </div>
              <p className="text-zinc-500 text-sm max-w-sm font-medium uppercase tracking-widest leading-relaxed">
