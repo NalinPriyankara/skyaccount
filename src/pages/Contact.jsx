@@ -69,7 +69,7 @@ const Contact = () => {
 
             <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
               ESTABLISH <br/>
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">CONNECTION</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-2">CONNECTION</span>
             </h2>
 
             <p className="text-gray-400 text-lg font-light leading-relaxed mb-12 max-w-lg">
@@ -129,10 +129,58 @@ const Contact = () => {
                   <input type="email" placeholder="Email@Network" className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm" />
                 </div>
               </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Org.Unit</label>
+                  <input type="text" placeholder="Company/Organization" className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Comm.Channel</label>
+                  <input type="tel" placeholder="Contact Number" className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm" />
+                </div>
+              </div>
               
-              <div className="space-y-2">
-                <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Ticket.Subject</label>
-                <input type="text" placeholder="Topic Overflow" className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm" />
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Ticket.Subject</label>
+                  <input type="text" placeholder="Topic Overflow" className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Project.Scale</label>
+                  <select className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm">
+                    {/* <option value="" disabled selected className="text-zinc-500">Select Project Type</option> */}
+                    <option value="consultation">Consultation</option>
+                    <option value="development">Development</option>
+                    <option value="integration">System Integration</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Priority.Level</label>
+                  <select className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm">
+                    {/* <option value="" disabled selected className="text-zinc-500">Select Urgency</option> */}
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="critical">Critical</option>
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black tracking-widest uppercase text-zinc-500 ml-2">Budget.Range</label>
+                  <select className="w-full bg-black border border-white/10 rounded-xl px-4 py-4 focus:border-cyan-500/50 outline-none transition-colors text-sm">
+                    {/* <option value="" disabled selected className="text-zinc-500">Select Budget Range</option> */}
+                    <option value="under-5k">Under $5,000</option>
+                    <option value="5k-15k">$5,000 - $15,000</option>
+                    <option value="15k-50k">$15,000 - $50,000</option>
+                    <option value="50k-100k">$50,000 - $100,000</option>
+                    <option value="over-100k">Over $100,000</option>
+                  </select>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -158,7 +206,7 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, margin: "-10%" }}
-                className="w-full h-[500px] overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl relative grayscale hover:grayscale-0 transition-all duration-1000 group"
+                className="w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl relative grayscale hover:grayscale-0 transition-all duration-1000 group"
              >
                 <div className="absolute inset-0 bg-cyan-500/5 pointer-events-none group-hover:opacity-0 transition-opacity z-10" />
                 <iframe
@@ -171,7 +219,7 @@ const Contact = () => {
         </div>
 
         {/* Social Bridge */}
-        <div className="flex flex-wrap items-center justify-center gap-12 mt-32 border-t border-white/5 pt-12">
+        <div className="flex flex-wrap items-center justify-center gap-12 mt-32 pt-12">
             {socialItems.map((item, i) => (
                 <motion.a
                    key={i}
