@@ -59,7 +59,7 @@ const stats = [
   },
   {
     id: 4,
-    value: "0.0%",
+    value: "95.0%",
     label: "Unplanned Downtime",
     description: "Achieved for 95% of our enterprise partners.",
     icon: ShieldCheck

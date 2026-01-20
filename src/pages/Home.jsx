@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,7 +15,7 @@ import Testimonials from "../components/Testimonials";
 import Pricing from "../components/Pricing";
 import { RevealOnScroll } from "../components/RevealOnScroll";
 import WarpEffect from "../components/WarpEffect";
-import SmartCore3D from "../components/SmartCore3D";
+const SmartCore3D = lazy(() => import("../components/SmartCore3D"));
 import DeviceShowcase from "../components/DeviceShowcase";
 
 const Home = () => {
@@ -23,11 +23,32 @@ const Home = () => {
   const coreSectionRef = useRef(null);
   const coreContentRef = useRef(null);
   const scrollProgress = useRef(0);
+  const [coreVisible, setCoreVisible] = useState(false);
 
+  // Defer heavy work: observe when core section enters viewport
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (!coreSectionRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCoreVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { root: null, rootMargin: "200px", threshold: 0.05 }
+    );
+    obs.observe(coreSectionRef.current);
+    return () => obs.disconnect();
+  }, []);
 
-    // GSAP Scroll Effects
+  // Initialize GSAP effects only when the core section becomes visible
+  useEffect(() => {
+    if (!coreVisible) return;
+    window.scrollTo(0, 0);
+    gsap.registerPlugin(ScrollTrigger);
+
     const ctx = gsap.context(() => {
       // Pinning the Neural Core Section for Storytelling
       ScrollTrigger.create({
@@ -82,7 +103,7 @@ const Home = () => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [coreVisible]);
 
   const { scrollYProgress: pageScrollY } = useScroll();
   const scaleX = useSpring(pageScrollY, {
