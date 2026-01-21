@@ -99,12 +99,12 @@ export default function HeroWithServices() {
   return (
     <div ref={containerRef} className="relative w-full bg-transparent overflow-hidden text-white" onMouseMove={handleMouseMove}>
       <section className="relative min-h-[90vh] flex flex-col pt-32 pb-20 px-6 justify-center">
-        <div className="max-w-[1400px] mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-[1400px] mx-auto w-full grid xl:grid-cols-2 gap-16 items-center">
           
           {/* LEFT: Typography & Call to Action */}
           <div 
             ref={leftSideRef}
-            className="relative z-10 text-center lg:text-left"
+            className="relative z-10 text-center xl:text-left mx-auto xl:mx-0 max-w-2xl xl:max-w-none"
           >
             {/* Cyber Indicator */}
             <motion.div 
@@ -130,7 +130,7 @@ export default function HeroWithServices() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-16 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 mb-16 justify-center xl:justify-start">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -173,7 +173,7 @@ export default function HeroWithServices() {
           {/* RIGHT: Professional Image Presentation */}
           <div 
             ref={rightSideRef}
-            className="relative w-full aspect-square md:aspect-auto h-[600px] hidden lg:block perspective-safe"
+            className="relative w-full aspect-square md:aspect-auto h-[600px] hidden xl:block perspective-safe"
           >
              <motion.div
                 initial={{ opacity: 0, x: 50 }}

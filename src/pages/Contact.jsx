@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageCover from "../components/PageCover";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
@@ -38,6 +38,9 @@ const fadeUp = {
 };
 
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-transparent min-h-screen text-white">
       <title>Contact Us | Sky Smart Intelligence - Engineering Support & Inquiry</title>

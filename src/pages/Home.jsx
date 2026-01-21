@@ -27,6 +27,9 @@ const Home = () => {
 
   // Defer heavy work: observe when core section enters viewport
   useEffect(() => {
+    // ensure page is at top on mount
+    window.scrollTo(0, 0);
+
     if (!coreSectionRef.current) return;
     const obs = new IntersectionObserver(
       (entries, observer) => {

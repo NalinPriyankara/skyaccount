@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const plans = [
   {
@@ -118,14 +119,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button className={`w-full py-4 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group ${
+              <Link to="/contact" className={`w-full py-4 rounded-2xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group ${
                 plan.featured
                   ? "bg-cyan-600 hover:bg-cyan-500 text-white hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]"
                   : "bg-transparent/10 text-white hover:bg-transparent/20 border border-white/5"
               }`}>
                 Get Started
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </motion.div>
           ))}
         </div>

@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PageCover from "../components/PageCover";
 import TeamSection from "../components/TeamSection";
 import StatisticsSection from "../components/StatisticsSection";
 import Slider from "react-slick";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 import { ArrowRight, Facebook, Linkedin, Twitter } from "lucide-react";
 import ind_06 from "../assets/ind_06.jpg";
 
@@ -25,6 +25,39 @@ const fadeUp = {
 const fadeIn = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.8 } },
+};
+
+/* -------------------- Local Counter -------------------- */
+const Counter = ({ value }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-10%" });
+  const count = useMotionValue(0);
+
+  const isDecimal = value.includes('.');
+  const numericValue = parseFloat(value) || 0;
+  const suffix = value.replace(/[0-9.]/g, '');
+
+  const rounded = useTransform(count, (latest) => {
+    if (isDecimal) {
+      return latest.toFixed(1) + suffix;
+    }
+    return Math.round(latest) + suffix;
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, numericValue, {
+        duration: 2,
+        delay: 0.2,
+        ease: "circOut",
+      });
+      return controls.stop;
+    } else {
+      count.set(0);
+    }
+  }, [numericValue, count, isInView]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
 };
 
 /* -------------------- Data -------------------- */
@@ -60,6 +93,9 @@ const teamMembers = [
 
 /* -------------------- Component -------------------- */
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-transparent text-white min-h-screen">
       <title>About Us | Sky Smart Intelligence - Leading IoT & AI Solutions</title>
@@ -69,13 +105,13 @@ const About = () => {
       <PageCover title="About Us" />
 
       {/* Hero Content Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen flex items-center justify-center py-12">
         {/* Subtle Glows */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full -z-10" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full -z-10" />
 
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="container mx-auto px-6 w-full">
+          <div className="grid lg:grid-cols-2 gap-20 items-center lg:pl-16">
             
             {/* Left Content */}
             <motion.div
@@ -105,14 +141,14 @@ const About = () => {
               </p>
 
               <div className="grid grid-cols-2 gap-8 border-t border-white/5 pt-10">
-                 <div>
+                  <div>
                     <h4 className="text-3xl font-black text-white mb-1">2008</h4>
                     <p className="text-[10px] font-black tracking-widest text-cyan-400 uppercase">Core Initialization</p>
-                 </div>
-                 <div>
-                    <h4 className="text-3xl font-black text-white mb-1">5K+</h4>
+                  </div>
+                  <div>
+                    <h4 className="text-3xl font-black text-white mb-1"><Counter value="5K+" /></h4>
                     <p className="text-[10px] font-black tracking-widest text-cyan-400 uppercase">Active Nodes</p>
-                 </div>
+                  </div>
               </div>
             </motion.div>
 
@@ -125,7 +161,7 @@ const About = () => {
                className="relative group"
             >
                <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-               <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-square">
+               <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[4/3] md:aspect-square max-h-[440px] md:max-h-[540px]">
                   <img
                     src={ind_06}
                     alt="Industrial Research"

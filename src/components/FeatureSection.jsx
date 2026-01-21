@@ -9,8 +9,8 @@ export default function FeatureSection() {
 
       <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
         
-        {/* LEFT: VISUAL COMPOSITION (3D Neural Core) */}
-        <div className="relative flex items-center justify-center py-10 lg:py-0 order-1 lg:order-1 overflow-visible">
+        {/* LEFT: VISUAL COMPOSITION (3D Neural Core) - hidden on small screens */}
+        <div className="hidden md:flex relative items-center justify-center py-10 lg:py-0 order-1 lg:order-1 overflow-visible">
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
