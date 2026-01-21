@@ -14,15 +14,15 @@ export default function ImageTextSection() {
 
   return (
     <section ref={containerRef} className="py-24 md:py-32 bg-transparent overflow-hidden relative z-10 px-4 md:px-0">
-      <div className="max-w-[1400px] mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-[1400px] mx-auto grid xl:grid-cols-2 gap-16 xl:gap-24 items-center">
 
         {/* CONTENT (Left Side) */}
-        <div className="relative order-2 lg:order-1 px-2 md:px-0">
+        <div className="relative order-2 xl:order-1 px-2 md:px-0">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, margin: "-10%" }}
-            className="flex items-center gap-3 mb-6 lg:justify-start justify-center"
+            className="flex items-center gap-3 mb-6 xl:justify-start justify-center"
           >
              <div className="h-px w-10 bg-cyan-400"></div>
              <span className="text-cyan-400 font-black text-[10px] md:text-xs uppercase tracking-[0.3em]">
@@ -35,7 +35,7 @@ export default function ImageTextSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-10%" }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1] tracking-tighter text-center lg:text-left uppercase"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1] tracking-tighter text-center xl:text-left uppercase"
           >
             INTELLIGENT <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">RESPONSE</span> <br className="hidden md:block" /> NETWORK
           </motion.h2>
@@ -45,7 +45,7 @@ export default function ImageTextSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-10%" }}
             transition={{ delay: 0.3 }}
-            className="text-zinc-500 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium text-center lg:text-left"
+            className="text-zinc-500 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto xl:mx-0 font-medium text-center xl:text-left"
           >
             Transform static signal towers into a <span className="text-white">dynamic digital nexus</span>. 
             Eliminate communication bottlenecks by instantly routing critical downtime alerts to the right teams.
@@ -57,7 +57,7 @@ export default function ImageTextSection() {
                      <Zap size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Smart Routing</h4>
-                 <p className="text-sm text-gray-500">Alerts bypass the hierarchy, reaching engineers directly.</p>
+                 <p className="text-md text-gray-500">Alerts bypass the hierarchy, reaching engineers directly.</p>
              </div>
 
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -65,7 +65,7 @@ export default function ImageTextSection() {
                      <BarChart3 size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Downtime Analytics</h4>
-                 <p className="text-sm text-gray-500">Visualize pareto charts of top failure modes instantly.</p>
+                 <p className="text-md text-gray-500">Visualize pareto charts of top failure modes instantly.</p>
              </div>
              
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -73,7 +73,7 @@ export default function ImageTextSection() {
                      <Timer size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Slash MTTR</h4>
-                 <p className="text-sm text-gray-500">Reduce Mean Time To Repair by up to 40%.</p>
+                 <p className="text-md text-gray-500">Reduce Mean Time To Repair by up to 40%.</p>
              </div>
 
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -81,14 +81,14 @@ export default function ImageTextSection() {
                      <CheckCircle2 size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Digital Audit</h4>
-                 <p className="text-sm text-gray-500">Full timestamps for every issue resolution step.</p>
+                 <p className="text-md text-gray-500">Full timestamps for every issue resolution step.</p>
              </div>
           </div>
         </div>
 
 
         {/* VISUAL (Right Side) */}
-        <div style={{ perspective: 1000 }} className="relative group order-1 lg:order-2">
+        <div style={{ perspective: 1000 }} className="relative group order-1 xl:order-2">
           
           <motion.div
             style={{ rotateX, scale }}
