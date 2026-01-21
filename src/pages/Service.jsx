@@ -1,10 +1,5 @@
 import {
-  PiggyBank,
-  Layers,
-  Target,
-  ShieldCheck,
   Headset,
-  BrainCircuit,
   ArrowRight,
   Cpu,
   Code2,
@@ -14,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageCover from "../components/PageCover";
-
+import ProjectCount from "../components/ProjectCount";
 /* -------------------- Animations -------------------- */
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -64,11 +59,11 @@ const services = [
     description: "Comprehensive IT consulting and holistic technology strategies to drive innovation across your entire organization.",
     icon: Globe,
   },
-  {
-    title: "AI and Big Data",
-    description: "Create intelligent solutions leveraging artificial intelligence and big data analytics to drive informed decision-making and business growth.",
-    icon: BrainCircuit,
-  },
+  // {
+  //   title: "AI and Big Data",
+  //   description: "Create intelligent solutions leveraging artificial intelligence and big data analytics to drive informed decision-making and business growth.",
+  //   icon: BrainCircuit,
+  // },
   {
     title: "Support & Maintenance",
     description: "Provide 24/7, global support and technical maintenace services to ensure your systems run smoothly and efficiently.",
@@ -90,8 +85,72 @@ export default function Service() {
       </motion.div>
 
       <div className="bg-transparent">
+
+        {/* ================= SMART APP SECTION ================= */}
+        <section className="py-10 bg-transparent text-white overflow-hidden">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 px-6 items-center">
+            {/* Text */}
+            <motion.div
+              variants={fadeLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: "-10%" }}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="flex gap-1">
+                  {[1, 2].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />)}
+                </div>
+                <span className="text-cyan-400 tracking-[0.4em] text-[10px] font-black uppercase">
+                  SMART ANDON SYSTEM
+                </span>
+              </div>
+
+              <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
+                The Future of <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 pr-2">Smart Andon Systems</span>
+              </h2>
+
+              <p className="text-gray-400 max-w-3xl leading-relaxed">
+                With smart random systems, lighting, climate, entertainment,
+                and security adapt intelligently—giving you effortless control
+                anytime, anywhere.
+              </p>
+
+              {/* <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                // className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-transparent/5 border border-white/10 text-white rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:bg-white hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+                className="mt-8 inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] cursor-pointer"
+              >
+                Read More
+                <ArrowRight size={18} className="text-cyan-400" />
+              </motion.a> */}
+            </motion.div>
+
+            {/* Image */}
+            <motion.div
+              variants={fadeRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: "-10%" }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
+            >
+              <img
+                src="src/assets/ind_03.jpg"
+                alt="Smart Andon System"
+                className="rounded-xl shadow-lg w-full h-auto object-cover max-h-[300px] xs:max-h-[360px] sm:max-h-[420px] md:max-h-[480px] lg:max-h-[540px] xl:max-h-[600px]"
+              />
+            </motion.div>
+          </div>
+        </section>
+
+        <div className="pt-30">
+          <ProjectCount />
+        </div>
+
         {/* ================= SERVICES HEADER ================= */}
-        <section className="py-10 text-center bg-transparent overflow-hidden">
+        <section className="text-center bg-transparent overflow-hidden">
           <motion.p
             variants={fadeUp}
             initial="hidden"
@@ -161,57 +220,6 @@ export default function Service() {
               <ArrowRight size={18} />
             </motion.button>
           </motion.div>
-        </section>
-
-        {/* ================= SMART APP SECTION ================= */}
-        <section className="py-24 bg-transparent text-white overflow-hidden">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 px-6 items-center">
-            {/* Text */}
-            <motion.div
-              variants={fadeLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, margin: "-10%" }}
-            >
-              <p className="text-sm tracking-widest text-[#60a5fa]">
-                SMART HOME APP
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold mt-4">
-                The Smart App Industry is Growing Fast
-              </h2>
-              <p className="text-gray-300 mt-6 leading-relaxed">
-                Home automation systems control lighting, climate,
-                entertainment, and security — giving you full control anytime,
-                anywhere.
-              </p>
-
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                // className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-transparent/5 border border-white/10 text-white rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:bg-white hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
-                className="mt-8 inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)] cursor-pointer"
-              >
-                Read More
-                <ArrowRight size={18} className="text-cyan-400" />
-              </motion.a>
-            </motion.div>
-
-            {/* Image */}
-            <motion.div
-              variants={fadeRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, margin: "-10%" }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758"
-                alt="Smart Home"
-                className="rounded-xl shadow-lg"
-              />
-            </motion.div>
-          </div>
         </section>
 
         {/* ================= FREE CONSULTATION CTA ================= */}

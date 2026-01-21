@@ -8,7 +8,7 @@ const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Service = lazy(() => import("./pages/Service"));
+const Service = lazy(() => import("./pages/Service2"));
 
 // Simple loading fallback
 const PageLoader = () => (
