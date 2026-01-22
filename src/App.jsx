@@ -12,6 +12,15 @@ const Service = lazy(() => import("./pages/Service"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 
+const Dashboard = lazy(() => import("./admin/Dashboard"));
+const DashboardFeedbacks = lazy(() => import("./admin/Feedbacks"));
+const DashboardContacts = lazy(() => import("./admin/Contacts"));
+const DashboardProjects = lazy(() => import("./admin/Projects"));
+const DashboardProjectsForm = lazy(() => import("./admin/ProjectsForm"));
+const DashboardFeedbacksForm = lazy(() => import("./admin/FeedbacksForm"));
+const DashboardContactsForm = lazy(() => import("./admin/ContactsForm"));
+const DashboardProjectsEdit = lazy(() => import("./admin/ProjectsEdit"));
+
 // Simple loading fallback
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-black">
@@ -46,6 +55,14 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/projects" element={<DashboardProjects />} />
+          <Route path="/dashboard/projects/new" element={<DashboardProjectsForm />} />
+          <Route path="/dashboard/projects/:id/edit" element={<DashboardProjectsEdit />} />
+          <Route path="/dashboard/feedbacks" element={<DashboardFeedbacks />} />
+          <Route path="/dashboard/feedbacks/new" element={<DashboardFeedbacksForm />} />
+          <Route path="/dashboard/contacts" element={<DashboardContacts />} />
+          <Route path="/dashboard/contacts/new" element={<DashboardContactsForm />} />
         </Routes>
       </Suspense>
     </MainLayout>
