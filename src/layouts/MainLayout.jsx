@@ -1,5 +1,6 @@
 // layouts/MainLayout.jsx
 import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import AdvancedBackground from '../components/AdvancedBackground'
@@ -51,6 +52,9 @@ const MainLayout = ({ children }) => {
     }
   }, [])
 
+  const location = useLocation()
+  const isAdminRoute = location.pathname.startsWith('/dashboard')
+
   return (
     <div className="font-font-primary bg-black text-white min-h-screen relative overflow-x-hidden">
       <script type="application/ld+json">
@@ -84,9 +88,9 @@ const MainLayout = ({ children }) => {
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar />
+        {!isAdminRoute && <Navbar />}
         <main className="flex-grow">{children}</main>
-        <Footer />
+        {!isAdminRoute && <Footer />}
       </div>
 
       {/* Persistent Bottom Data Bar (Mobile Only) */}
