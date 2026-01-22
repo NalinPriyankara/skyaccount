@@ -8,7 +8,9 @@ const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Service = lazy(() => import("./pages/Service2"));
+const Service = lazy(() => import("./pages/Service"));
+const SignIn = lazy(() => import("./pages/SignIn"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -42,6 +44,8 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/services" element={<Service />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </Suspense>
     </MainLayout>
