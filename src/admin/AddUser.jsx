@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
+import { createUser } from "../api/userManagement";
 
 export default function AddUser() {
   const navigate = useNavigate();
@@ -39,13 +40,19 @@ export default function AddUser() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      console.log({ email, password, role });
-      // TODO: post to API
-      navigate("/dashboard/users");
+      try {
+        const userData = { email, password, role };
+        await createUser(userData);
+        navigate("/dashboard/users");
+      } catch (error) {
+        console.error("Error creating user:", error);
+        // You can add error handling here, like showing a toast notification
+        setErrors({ submit: "Failed to create user. Please try again." });
+      }
     }
   };
 
@@ -104,6 +111,8 @@ export default function AddUser() {
             </select>
             {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
           </div>
+
+          {errors.submit && <p className="text-red-500 text-sm">{errors.submit}</p>}
 
           <div className="flex items-center gap-3">
             <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold">

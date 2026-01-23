@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate, useParams } from "react-router-dom";
+import { getUser, updateUser } from "../api/userManagement";
 
 export default function EditUser() {
   const navigate = useNavigate();
@@ -8,30 +9,22 @@ export default function EditUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate fetching user data
+  // Fetch user data
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        // TODO: Replace with actual API call
-        // const response = await fetch(`/api/users/${id}`);
-        // const userData = await response.json();
-
-        // Mock data for now
-        const mockUser = {
-          id: id,
-          email: `user${id}@example.com`,
-          // Note: In real app, you wouldn't fetch password for security reasons
-          // Password field would be empty and only updated if user wants to change it
-        };
-
-        setEmail(mockUser.email);
+        const userData = await getUser(id);
+        setEmail(userData.email);
+        setRole(userData.role || "");
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching user:", error);
         setIsLoading(false);
+        setErrors({ fetch: "Failed to load user data" });
       }
     };
 
@@ -60,22 +53,30 @@ export default function EditUser() {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
+    if (!role) {
+      newErrors.role = "Please select a role";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      const updateData = { email };
-      if (password) {
-        updateData.password = password;
-      }
+      try {
+        const updateData = { email, role };
+        if (password) {
+          updateData.password = password;
+        }
 
-      console.log("Updating user:", { id, ...updateData });
-      // TODO: post to API
-      navigate("/dashboard/users");
+        await updateUser(id, updateData);
+        navigate("/dashboard/users");
+      } catch (error) {
+        console.error("Error updating user:", error);
+        setErrors({ submit: "Failed to update user. Please try again." });
+      }
     }
   };
 
@@ -133,6 +134,23 @@ export default function EditUser() {
             />
             {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
           </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Role</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            >
+              <option value="" style={{ backgroundColor: '#1f2937' }}>Select a role</option>
+              <option value="Admin" style={{ backgroundColor: '#1f2937', color: '#f87171' }}>Admin</option>
+              <option value="Manager" style={{ backgroundColor: '#1f2937', color: '#60a5fa' }}>Manager</option>
+              <option value="User" style={{ backgroundColor: '#1f2937', color: '#a1a1aa' }}>User</option>
+            </select>
+            {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
+          </div>
+
+          {errors.submit && <p className="text-red-500 text-sm">{errors.submit}</p>}
 
           <div className="flex items-center gap-3">
             <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold">

@@ -1,21 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
+import { getUsers, deleteUser } from "../api/userManagement";
 
 export default function ViewUser() {
-  const [users, setUsers] = useState([
-    { id: 1, email: "admin@example.com", role: "Admin", createdAt: "2024-01-15", status: "Active" },
-    { id: 2, email: "user1@example.com", role: "User", createdAt: "2024-01-20", status: "Active" },
-    { id: 3, email: "user2@example.com", role: "User", createdAt: "2024-01-22", status: "Inactive" },
-    { id: 4, email: "manager@example.com", role: "Manager", createdAt: "2024-01-18", status: "Active" },
-  ]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleDelete = (id) => {
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
+      const userData = await getUsers();
+      setUsers(userData);
+      setError(null);
+    } catch (err) {
+      console.error("Error fetching users:", err);
+      setError("Failed to load users. Please check your connection and try again.");
+      setUsers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
     const user = users.find(u => u.id === id);
     const ok = window.confirm(`Delete user ${user.email}?`);
     if (!ok) return;
-    // TODO: call API to delete on server
-    setUsers((prev) => prev.filter((u) => u.id !== id));
+
+    try {
+      await deleteUser(id);
+      setUsers((prev) => prev.filter((u) => u.id !== id));
+    } catch (err) {
+      console.error("Error deleting user:", err);
+      alert("Failed to delete user. Please try again.");
+    }
   };
 
   const getRoleColor = (role) => {
@@ -29,6 +52,18 @@ export default function ViewUser() {
     }
   };
 
+  if (loading) {
+    return (
+      <AdminLayout>
+        <div className="p-8">
+          <div className="flex items-center justify-center py-12">
+            <div className="w-8 h-8 border-4 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin" />
+          </div>
+        </div>
+      </AdminLayout>
+    );
+  }
+
   return (
     <AdminLayout>
       <div className="p-8">
@@ -41,6 +76,12 @@ export default function ViewUser() {
             + Add User
           </Link>
         </div>
+
+        {error && (
+          <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+            <p className="text-red-400">{error}</p>
+          </div>
+        )}
 
         <div className="bg-accent/10 rounded-lg border border-white/5 overflow-hidden">
           {/* Desktop Table View */}
