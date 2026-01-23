@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
+import { createFeedback } from "../api/FeedbackApi";
 
 export default function FeedbacksForm() {
   const navigate = useNavigate();
   const [author, setAuthor] = useState("");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ author, rating, message });
-    // TODO: post to API
-    navigate("/dashboard/feedbacks");
+    setLoading(true);
+    setError("");
+    createFeedback({ author, rating: Number(rating), message })
+      .then(() => {
+        setSuccess("Feedback created successfully.");
+        setTimeout(() => navigate("/dashboard/feedbacks", { state: { flash: { type: 'success', message: 'Feedback created successfully.' } } }), 900);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError(err?.message || err?.error || "Failed to create feedback");
+        setSuccess("");
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -20,13 +34,14 @@ export default function FeedbacksForm() {
       <div className="p-8 max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Add Feedback</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Author</label>
             <input value={author} onChange={(e) => setAuthor(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
           </div>
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Rating (1-5)</label>
-            <input type="number" value={rating} onChange={(e) => setRating(Number(e.target.value))} min={1} max={5} className="w-32 p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+            <input type="number" value={rating} onChange={(e) => setRating(Math.max(1, Math.min(5, Number(e.target.value || 1))))} min={1} max={5} className="w-32 p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
           </div>
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Message</label>
@@ -34,9 +49,10 @@ export default function FeedbacksForm() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold">Create</button>
+            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60">{loading ? 'Creating...' : 'Create'}</button>
             <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
           </div>
+          {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>
       </div>
     </AdminLayout>
