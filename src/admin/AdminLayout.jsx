@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X, Users } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex">
@@ -16,7 +18,7 @@ export default function AdminLayout({ children }) {
           <div className="text-lg font-black">Admin</div>
         </div>
         <div>
-          <button className="p-2 rounded-md hover:bg-white/5">
+          <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); }} className="p-2 rounded-md hover:bg-white/5">
             <LogOut className="w-4 h-4" />
           </button>
         </div>
@@ -64,7 +66,10 @@ export default function AdminLayout({ children }) {
         </nav>
 
         <div className="mt-auto">
-          <button className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+          <div className="mb-4 px-3">
+            <p className="text-white font-medium">{user.first_name} {user.last_name}</p>
+          </div>
+          <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); }} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
             <LogOut className="w-4 h-4" />
             <span className="text-sm">Sign out</span>
           </button>
@@ -121,7 +126,10 @@ export default function AdminLayout({ children }) {
           </nav>
 
           <div className="mt-auto">
-            <button className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+            <div className="mb-4 px-3">
+              <p className="text-white font-medium">{user.first_name} {user.last_name}</p>
+            </div>
+            <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); setOpen(false); }} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
               <LogOut className="w-4 h-4" />
               <span className="text-sm">Sign out</span>
             </button>

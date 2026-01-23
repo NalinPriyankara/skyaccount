@@ -1,23 +1,35 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { signIn, getCurrentUser } from '../api/userManagement';
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    setError('');
+    try {
+      const response = await signIn({ email, password });
+      // Assuming response has token
+      localStorage.setItem('token', response.token);
+      // Fetch current user data
+      const user = await getCurrentUser();
+      localStorage.setItem('user', JSON.stringify(user));
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Sign in error:', error);
+      setError(error.message || 'Failed to sign in. Please try again.');
+    } finally {
       setIsLoading(false);
-      console.log('Sign in attempt:', { email, password });
-      // Handle authentication logic here
-    }, 2000);
+    }
   };
 
   return (
@@ -114,7 +126,11 @@ export default function SignIn() {
               Forgot password?
             </Link>
           </div>
-
+          {error && (
+            <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+              <p className="text-red-400 text-sm">{error}</p>
+            </div>
+          )}
           {/* Submit Button */}
           <motion.button
             whileHover={{ scale: 1.02 }}

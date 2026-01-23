@@ -2,6 +2,25 @@ import axios from "axios";
 import api from "./apiClient";
 
 const API_URL = "http://localhost:8000/api/user-managements";
+const AUTH_URL = "http://localhost:8000/api";
+
+export const signIn = async (credentials) => {
+  try {
+    const response = await axios.post(`${AUTH_URL}/login`, credentials);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
+
+export const getCurrentUser = async () => {
+  try {
+    const response = await api.get(`${AUTH_URL}/user`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};
 
 export const createUser = async (userData) => {
   try {
@@ -42,15 +61,6 @@ export const updateUser = async (id, userData) => {
 export const deleteUser = async (id) => {
   try {
     const response = await api.delete(`${API_URL}/${id}`);
-    return response.data;
-  } catch (error) {
-    throw error.response?.data || error;
-  }
-};
-
-export const changeUserPassword = async (id, passwordData) => {
-  try {
-    const response = await api.patch(`${API_URL}/${id}/password`, passwordData);
     return response.data;
   } catch (error) {
     throw error.response?.data || error;
