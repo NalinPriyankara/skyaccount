@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X } from "lucide-react";
+import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X, Users } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
@@ -46,6 +46,12 @@ export default function AdminLayout({ children }) {
               <Link to="/dashboard/feedbacks" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
                 <MessageCircle className="w-5 h-5 text-cyan-400" />
                 <span className="font-bold">Feedbacks</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/users" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                <Users className="w-5 h-5 text-cyan-400" />
+                <span className="font-bold">User Management</span>
               </Link>
             </li>
             <li>
@@ -97,6 +103,12 @@ export default function AdminLayout({ children }) {
                 <Link to="/dashboard/feedbacks" onClick={() => setOpen(false)} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
                   <MessageCircle className="w-5 h-5 text-cyan-400" />
                   <span className="font-bold">Feedbacks</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/users" onClick={() => setOpen(false)} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                  <Users className="w-5 h-5 text-cyan-400" />
+                  <span className="font-bold">User Management</span>
                 </Link>
               </li>
               <li>

@@ -20,6 +20,9 @@ const DashboardProjectsForm = lazy(() => import("./admin/ProjectsForm"));
 const DashboardFeedbacksForm = lazy(() => import("./admin/FeedbacksForm"));
 const DashboardContactsForm = lazy(() => import("./admin/ContactsForm"));
 const DashboardProjectsEdit = lazy(() => import("./admin/ProjectsEdit"));
+const AddUser = lazy(() => import("./admin/AddUser"));
+const EditUser = lazy(() => import("./admin/EditUser"));
+const ViewUser = lazy(() => import("./admin/ViewUser"));
 
 // Simple loading fallback
 const PageLoader = () => (
@@ -63,6 +66,9 @@ function App() {
           <Route path="/dashboard/feedbacks/new" element={<DashboardFeedbacksForm />} />
           <Route path="/dashboard/contacts" element={<DashboardContacts />} />
           <Route path="/dashboard/contacts/new" element={<DashboardContactsForm />} />
+          <Route path="/dashboard/users" element={<ViewUser />} />
+          <Route path="/dashboard/users/new" element={<AddUser />} />
+          <Route path="/dashboard/users/:id/edit" element={<EditUser />} />
         </Routes>
       </Suspense>
     </MainLayout>
