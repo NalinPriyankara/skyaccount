@@ -90,6 +90,7 @@ export default function ViewUser() {
               <thead className="bg-accent/20">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">ID</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Name</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Email</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Role</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Actions</th>
@@ -99,6 +100,7 @@ export default function ViewUser() {
                 {users.map((user) => (
                   <tr key={user.id} className="hover:bg-accent/5">
                     <td className="px-6 py-4 text-sm text-zinc-300">#{user.id}</td>
+                    <td className="px-6 py-4 text-sm text-white">{user.first_name} {user.last_name}</td>
                     <td className="px-6 py-4 text-sm text-white">{user.email}</td>
                     <td className="px-6 py-4 text-sm">
                       <span className={getRoleColor(user.role)}>{user.role}</span>
@@ -132,7 +134,8 @@ export default function ViewUser() {
                 <div className="flex items-start justify-between mb-3">
                   <div>
                     <div className="text-sm text-zinc-300">#{user.id}</div>
-                    <div className="text-white font-medium">{user.email}</div>
+                    <div className="text-white font-medium">{user.first_name} {user.last_name}</div>
+                    <div className="text-sm text-zinc-300">{user.email}</div>
                   </div>
                   <div className="flex gap-2">
                     <Link
