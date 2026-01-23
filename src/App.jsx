@@ -9,8 +9,9 @@ const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Service = lazy(() => import("./pages/Service"));
-const SignIn = lazy(() => import("./pages/SignIn"));
-const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+
+const SignIn = lazy(() => import("./admin/SignIn"));
+const ResetPassword = lazy(() => import("./admin/ResetPassword"));
 
 const Dashboard = lazy(() => import("./admin/Dashboard"));
 const DashboardFeedbacks = lazy(() => import("./admin/Feedbacks"));

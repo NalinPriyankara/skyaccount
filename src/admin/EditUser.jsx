@@ -10,6 +10,11 @@ export default function EditUser() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [department, setDepartment] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,6 +25,11 @@ export default function EditUser() {
         const userData = await getUser(id);
         setEmail(userData.email);
         setRole(userData.role || "");
+        setFirstName(userData.first_name || "");
+        setLastName(userData.last_name || "");
+        setAddress(userData.address || "");
+        setTelephone(userData.telephone || "");
+        setDepartment(userData.department || "");
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -57,6 +67,26 @@ export default function EditUser() {
       newErrors.role = "Please select a role";
     }
 
+    if (!firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+
+    if (!lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+
+    if (!address.trim()) {
+      newErrors.address = "Address is required";
+    }
+
+    if (!telephone.trim()) {
+      newErrors.telephone = "Telephone number is required";
+    }
+
+    if (!department.trim()) {
+      newErrors.department = "Department is required";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -66,7 +96,7 @@ export default function EditUser() {
 
     if (validateForm()) {
       try {
-        const updateData = { email, role };
+        const updateData = { email, role, first_name: firstName, last_name: lastName, address, telephone, department };
         if (password) {
           updateData.password = password;
         }
@@ -98,6 +128,30 @@ export default function EditUser() {
         <h1 className="text-2xl font-bold mb-4">Edit User</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
+            <label className="block text-sm text-zinc-400 mb-1">First Name</label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              placeholder="Enter first name"
+            />
+            {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Last Name</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              placeholder="Enter last name"
+            />
+            {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
+          </div>
+
+          <div>
             <label className="block text-sm text-zinc-400 mb-1">Email</label>
             <input
               type="email"
@@ -107,6 +161,30 @@ export default function EditUser() {
               placeholder="Enter email address"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Address</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              placeholder="Enter address"
+            />
+            {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Telephone Number</label>
+            <input
+              type="tel"
+              value={telephone}
+              onChange={(e) => setTelephone(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              placeholder="Enter telephone number"
+            />
+            {errors.telephone && <p className="text-red-500 text-sm mt-1">{errors.telephone}</p>}
           </div>
 
           <div>
@@ -148,6 +226,18 @@ export default function EditUser() {
               <option value="User" style={{ backgroundColor: '#1f2937', color: '#a1a1aa' }}>User</option>
             </select>
             {errors.role && <p className="text-red-500 text-sm mt-1">{errors.role}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Department</label>
+            <input
+              type="text"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              placeholder="Enter department"
+            />
+            {errors.department && <p className="text-red-500 text-sm mt-1">{errors.department}</p>}
           </div>
 
           {errors.submit && <p className="text-red-500 text-sm">{errors.submit}</p>}

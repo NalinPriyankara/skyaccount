@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Eye, EyeOff, CheckCircle, AlertCircle, Mail } from 'lucide-react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { updateUser, getUsers } from '../api/userManagement';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('');
@@ -15,22 +16,12 @@ export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const token = searchParams.get('token');
-
   const validatePassword = (password) => {
-    const minLength = password.length >= 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumbers = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const minLength = password.length >= 6;
 
     return {
       minLength,
-      hasUpperCase,
-      hasLowerCase,
-      hasNumbers,
-      hasSpecialChar,
-      isValid: minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar
+      isValid: minLength
     };
   };
 
@@ -52,18 +43,26 @@ export default function ResetPassword() {
 
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const users = await getUsers();
+      const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+      if (!user) {
+        setError('User not found with this email address.');
+        return;
+      }
+      await updateUser(user.id, { password });
       setIsSuccess(true);
-      // Handle password reset logic here with token
-      console.log('Password reset:', { token, password });
-    }, 2000);
+    } catch (error) {
+      console.error('Password reset error:', error);
+      setError(error.message || 'Failed to reset password. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center px-4">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -239,23 +238,7 @@ export default function ResetPassword() {
             <div className="space-y-2 text-sm">
               <div className={`flex items-center ${passwordValidation.minLength ? 'text-green-400' : 'text-gray-500'}`}>
                 <CheckCircle className={`w-4 h-4 mr-2 ${passwordValidation.minLength ? 'text-green-400' : 'text-gray-500'}`} />
-                At least 8 characters
-              </div>
-              <div className={`flex items-center ${passwordValidation.hasUpperCase ? 'text-green-400' : 'text-gray-500'}`}>
-                <CheckCircle className={`w-4 h-4 mr-2 ${passwordValidation.hasUpperCase ? 'text-green-400' : 'text-gray-500'}`} />
-                One uppercase letter
-              </div>
-              <div className={`flex items-center ${passwordValidation.hasLowerCase ? 'text-green-400' : 'text-gray-500'}`}>
-                <CheckCircle className={`w-4 h-4 mr-2 ${passwordValidation.hasLowerCase ? 'text-green-400' : 'text-gray-500'}`} />
-                One lowercase letter
-              </div>
-              <div className={`flex items-center ${passwordValidation.hasNumbers ? 'text-green-400' : 'text-gray-500'}`}>
-                <CheckCircle className={`w-4 h-4 mr-2 ${passwordValidation.hasNumbers ? 'text-green-400' : 'text-gray-500'}`} />
-                One number
-              </div>
-              <div className={`flex items-center ${passwordValidation.hasSpecialChar ? 'text-green-400' : 'text-gray-500'}`}>
-                <CheckCircle className={`w-4 h-4 mr-2 ${passwordValidation.hasSpecialChar ? 'text-green-400' : 'text-gray-500'}`} />
-                One special character
+                At least 6 characters
               </div>
             </div>
           </div>
@@ -265,7 +248,7 @@ export default function ResetPassword() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            disabled={isLoading || !token}
+            disabled={isLoading}
             className="w-full py-3 px-4 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-black font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mb-6"
           >
             {isLoading ? (
