@@ -1,0 +1,134 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import AdminLayout from "./AdminLayout";
+
+export default function ViewUser() {
+  const [users, setUsers] = useState([
+    { id: 1, email: "admin@example.com", role: "Admin", createdAt: "2024-01-15", status: "Active" },
+    { id: 2, email: "user1@example.com", role: "User", createdAt: "2024-01-20", status: "Active" },
+    { id: 3, email: "user2@example.com", role: "User", createdAt: "2024-01-22", status: "Inactive" },
+    { id: 4, email: "manager@example.com", role: "Manager", createdAt: "2024-01-18", status: "Active" },
+  ]);
+
+  const handleDelete = (id) => {
+    const user = users.find(u => u.id === id);
+    const ok = window.confirm(`Delete user ${user.email}?`);
+    if (!ok) return;
+    // TODO: call API to delete on server
+    setUsers((prev) => prev.filter((u) => u.id !== id));
+  };
+
+  const getRoleColor = (role) => {
+    switch (role) {
+      case "Admin":
+        return "text-red-400";
+      case "Manager":
+        return "text-blue-400";
+      default:
+        return "text-zinc-400";
+    }
+  };
+
+  return (
+    <AdminLayout>
+      <div className="p-8">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-black">Users — Admin</h1>
+          <Link
+            to="/dashboard/users/new"
+            className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500 text-black rounded-md font-semibold"
+          >
+            + Add User
+          </Link>
+        </div>
+
+        <div className="bg-accent/10 rounded-lg border border-white/5 overflow-hidden">
+          {/* Desktop Table View */}
+          <div className="hidden md:block overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-accent/20">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">ID</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Email</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Role</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-zinc-300">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {users.map((user) => (
+                  <tr key={user.id} className="hover:bg-accent/5">
+                    <td className="px-6 py-4 text-sm text-zinc-300">#{user.id}</td>
+                    <td className="px-6 py-4 text-sm text-white">{user.email}</td>
+                    <td className="px-6 py-4 text-sm">
+                      <span className={getRoleColor(user.role)}>{user.role}</span>
+                    </td>
+                    <td className="px-6 py-4 text-sm">
+                      <div className="flex items-center gap-2">
+                        <Link
+                          to={`/dashboard/users/${user.id}/edit`}
+                          className="px-3 py-1 bg-yellow-500 text-black rounded-md hover:opacity-90 text-xs font-semibold"
+                        >
+                          Edit
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(user.id)}
+                          className="px-3 py-1 bg-red-600 text-white rounded-md hover:opacity-90 text-xs font-semibold"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="md:hidden space-y-4 p-4">
+            {users.map((user) => (
+              <div key={user.id} className="bg-accent/5 rounded-lg p-4 border border-white/5">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <div className="text-sm text-zinc-300">#{user.id}</div>
+                    <div className="text-white font-medium">{user.email}</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Link
+                      to={`/dashboard/users/${user.id}/edit`}
+                      className="px-3 py-1 bg-yellow-500 text-black rounded-md hover:opacity-90 text-xs font-semibold"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(user.id)}
+                      className="px-3 py-1 bg-red-600 text-white rounded-md hover:opacity-90 text-xs font-semibold"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <div className="text-sm">
+                  <span className="text-zinc-400">Role:</span>
+                  <span className={`ml-2 ${getRoleColor(user.role)}`}>{user.role}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {users.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-zinc-400">No users found.</p>
+            <Link
+              to="/dashboard/users/new"
+              className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-cyan-500 text-black rounded-md font-semibold"
+            >
+              + Add First User
+            </Link>
+          </div>
+        )}
+      </div>
+    </AdminLayout>
+  );
+}

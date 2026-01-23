@@ -54,6 +54,7 @@ const MainLayout = ({ children }) => {
 
   const location = useLocation()
   const isAdminRoute = location.pathname.startsWith('/dashboard')
+  const isAuthRoute = location.pathname === '/signin' || location.pathname === '/reset-password'
 
   return (
     <div className="font-font-primary bg-black text-white min-h-screen relative overflow-x-hidden">
@@ -88,9 +89,9 @@ const MainLayout = ({ children }) => {
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        {!isAdminRoute && <Navbar />}
+        {!isAdminRoute && !isAuthRoute && <Navbar />}
         <main className="flex-grow">{children}</main>
-        {!isAdminRoute && <Footer />}
+        {!isAdminRoute && !isAuthRoute && <Footer />}
       </div>
 
       {/* Persistent Bottom Data Bar (Mobile Only) */}
