@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
+import { createProject } from "../api/ProjectApi";
 
 export default function ProjectsForm() {
   const navigate = useNavigate();
@@ -10,25 +11,38 @@ export default function ProjectsForm() {
   const [imageFile, setImageFile] = useState(null);
   const [preview, setPreview] = useState("");
   const inputRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: post to API - example FormData usage
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('status', status);
-    if (imageFile) formData.append('image', imageFile);
-    // For now just log and navigate back
-    console.log('Submitting project form (FormData):', { title, description, status, imageFile });
-    navigate("/dashboard/projects");
+    setLoading(true)
+    setError("")
+    createProject({ title, description, status, image: imageFile })
+      .then(() => {
+        setSuccess("Project created successfully.");
+        setTimeout(() => navigate("/dashboard/projects", { state: { flash: { type: 'success', message: 'Project created successfully.' } } }), 900);
+      })
+      .catch((err) => {
+        console.error(err)
+        setError(err?.response?.data?.message || err.message || "Failed to create project")
+      })
+      .finally(() => setLoading(false))
   };
+
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview)
+    }
+  }, [preview])
 
   return (
     <AdminLayout>
       <div className="p-8 max-w-3xl">
         <h1 className="text-2xl font-bold mb-4">Add Project</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Title</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
@@ -79,9 +93,10 @@ export default function ProjectsForm() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold">Create</button>
+            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60">{loading ? 'Creating...' : 'Create'}</button>
             <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
           </div>
+          {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>
       </div>
     </AdminLayout>
