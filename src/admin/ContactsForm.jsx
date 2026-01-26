@@ -39,8 +39,8 @@ export default function ContactsForm() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold">Create</button>
-            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
+            <button type="submit" className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold hover:opacity-90 cursor-pointer">Create</button>
+            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg hover:opacity-90 cursor-pointer">Cancel</button>
           </div>
         </form>
       </div>

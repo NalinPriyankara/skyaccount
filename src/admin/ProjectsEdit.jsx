@@ -134,8 +134,8 @@ export default function ProjectsEdit() {
 
           {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div className="flex items-center gap-3">
-            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60">{loading ? 'Saving...' : 'Save'}</button>
-            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
+            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60 hover:opacity-90 cursor-pointer">{loading ? 'Saving...' : 'Save'}</button>
+            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg hover:opacity-90 cursor-pointer">Cancel</button>
           </div>
           {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>

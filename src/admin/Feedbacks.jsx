@@ -55,7 +55,7 @@ export default function Feedbacks() {
       <div className="p-8">
         <div className="flex items-center justify-between mb-4">
           <h1 className="text-3xl font-bold">Feedbacks</h1>
-          <Link to="/dashboard/feedbacks/new" className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500 text-black rounded-md font-semibold">+ Add Feedback</Link>
+          <Link to="/dashboard/feedbacks/new" className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500 text-black rounded-md font-semibold hover:opacity-90 cursor-pointer">+ Add Feedback</Link>
         </div>
 
         {loading ? (
@@ -89,7 +89,7 @@ export default function Feedbacks() {
               <h3 className="text-lg font-semibold text-white mb-2">Confirm delete</h3>
               <p className="text-sm text-zinc-400 mb-4">Are you sure you want to delete feedback #{confirmId}? This action cannot be undone.</p>
               <div className="flex justify-end gap-3">
-                <button onClick={() => { setConfirmOpen(false); setConfirmId(null); }} className="px-4 py-2 bg-white/5 rounded-md">Cancel</button>
+                <button onClick={() => { setConfirmOpen(false); setConfirmId(null); }} className="px-4 py-2 bg-white/5 rounded-md hover:opacity-90 cursor-pointer">Cancel</button>
                 <button onClick={async () => {
                     setDeletingId(confirmId);
                     try {
@@ -105,7 +105,7 @@ export default function Feedbacks() {
                       setConfirmOpen(false);
                       setConfirmId(null);
                     }
-                  }} disabled={deletingId === confirmId} className="px-4 py-2 bg-red-600 text-white rounded-md">{deletingId === confirmId ? 'Deleting...' : 'Delete'}</button>
+                  }} disabled={deletingId === confirmId} className="px-4 py-2 bg-red-600 text-white rounded-md hover:opacity-90 cursor-pointer">{deletingId === confirmId ? 'Deleting...' : 'Delete'}</button>
               </div>
             </div>
           </div>
