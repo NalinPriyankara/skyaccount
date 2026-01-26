@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
 import { createProject } from "../api/ProjectApi";
+import SuccessModal from "../components/SuccessModal";
 
 export default function ProjectsForm() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function ProjectsForm() {
   const inputRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,14 +22,18 @@ export default function ProjectsForm() {
     setError("")
     createProject({ title, description, status, image: imageFile })
       .then(() => {
-        setSuccess("Project created successfully.");
-        setTimeout(() => navigate("/dashboard/projects", { state: { flash: { type: 'success', message: 'Project created successfully.' } } }), 900);
+        setShowSuccessModal(true);
       })
       .catch((err) => {
         console.error(err)
         setError(err?.response?.data?.message || err.message || "Failed to create project")
       })
       .finally(() => setLoading(false))
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    navigate("/dashboard/projects");
   };
 
   useEffect(() => {
@@ -42,7 +47,6 @@ export default function ProjectsForm() {
       <div className="p-8 max-w-3xl">
         <h1 className="text-2xl font-bold mb-4">Add Project</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Title</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
@@ -99,6 +103,13 @@ export default function ProjectsForm() {
           {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleSuccessModalClose}
+        title="Project Created Successfully"
+        message="The project has been added to the system. You will be redirected to the projects list."
+      />
     </AdminLayout>
   );
 }

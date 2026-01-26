@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../api/userManagement";
+import SuccessModal from "../components/SuccessModal";
 
 export default function AddUser() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function AddUser() {
   const [telephone, setTelephone] = useState("");
   const [department, setDepartment] = useState("");
   const [errors, setErrors] = useState({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
@@ -72,13 +74,18 @@ export default function AddUser() {
       try {
         const userData = { email, password, role, first_name: firstName, last_name: lastName, address, telephone, department };
         await createUser(userData);
-        navigate("/dashboard/users");
+        setShowSuccessModal(true);
       } catch (error) {
         console.error("Error creating user:", error);
         // You can add error handling here, like showing a toast notification
         setErrors({ submit: "Failed to create user. Please try again." });
       }
     }
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    navigate("/dashboard/users");
   };
 
   return (
@@ -214,6 +221,13 @@ export default function AddUser() {
           </div>
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleSuccessModalClose}
+        title="User Created Successfully"
+        message="The new user has been added to the system. You will be redirected to the users list."
+      />
     </AdminLayout>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate } from "react-router-dom";
 import { createFeedback } from "../api/FeedbackApi";
+import SuccessModal from "../components/SuccessModal";
 
 export default function FeedbacksForm() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function FeedbacksForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,15 +19,18 @@ export default function FeedbacksForm() {
     setError("");
     createFeedback({ author, rating: Number(rating), message })
       .then(() => {
-        setSuccess("Feedback created successfully.");
-        setTimeout(() => navigate("/dashboard/feedbacks", { state: { flash: { type: 'success', message: 'Feedback created successfully.' } } }), 900);
+        setShowSuccessModal(true);
       })
       .catch((err) => {
         console.error(err);
         setError(err?.message || err?.error || "Failed to create feedback");
-        setSuccess("");
       })
       .finally(() => setLoading(false));
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    navigate("/dashboard/feedbacks");
   };
 
   return (
@@ -34,7 +38,6 @@ export default function FeedbacksForm() {
       <div className="p-8 max-w-2xl">
         <h1 className="text-2xl font-bold mb-4">Add Feedback</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Author</label>
             <input value={author} onChange={(e) => setAuthor(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
@@ -55,6 +58,13 @@ export default function FeedbacksForm() {
           {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleSuccessModalClose}
+        title="Feedback Created Successfully"
+        message="The feedback has been added to the system. You will be redirected to the feedbacks list."
+      />
     </AdminLayout>
   );
 }
