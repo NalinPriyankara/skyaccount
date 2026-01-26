@@ -97,8 +97,8 @@ export default function ProjectsForm() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60">{loading ? 'Creating...' : 'Create'}</button>
-            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
+            <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg hover:opacity-90 cursor-pointer font-semibold disabled:opacity-60">{loading ? 'Creating...' : 'Create'}</button>
+            <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg hover:opacity-90 cursor-pointer">Cancel</button>
           </div>
           {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>

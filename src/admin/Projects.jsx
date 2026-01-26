@@ -62,7 +62,7 @@ export default function Projects() {
       <div className="p-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-3xl font-black">Projects</h1>
-          <Link to="/dashboard/projects/new" className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500 text-black rounded-md font-semibold">+ Add Project</Link>
+          <Link to="/dashboard/projects/new" className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500 text-black rounded-md font-semibold hover:opacity-90 cursor-pointer">+ Add Project</Link>
         </div>
 
         {loading ? (
@@ -111,7 +111,7 @@ export default function Projects() {
                   <p className="text-sm text-zinc-400 mt-3 flex-1">{p.description}</p>
                   <div className="mt-4 flex items-center justify-end gap-2">
                     <Link to={`/dashboard/projects/${p.id}/edit`} state={{ project: p }} className="px-3 py-1.5 bg-yellow-500 text-black rounded-md hover:opacity-90">Edit</Link>
-                    <button onClick={() => openConfirm(p.id)} disabled={deletingId === p.id} className="px-3 py-1.5 bg-red-600 text-white rounded-md hover:opacity-90 disabled:opacity-60">{deletingId === p.id ? 'Deleting...' : 'Delete'}</button>
+                    <button onClick={() => openConfirm(p.id)} disabled={deletingId === p.id} className="px-3 py-1.5 bg-red-600 text-white rounded-md hover:opacity-90 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed">{deletingId === p.id ? 'Deleting...' : 'Delete'}</button>
                   </div>
                 </div>
               )
@@ -126,8 +126,8 @@ export default function Projects() {
               <h3 className="text-lg font-semibold text-white mb-2">Confirm delete</h3>
               <p className="text-sm text-zinc-400 mb-4">Are you sure you want to delete project #{confirmId}? This action cannot be undone.</p>
               <div className="flex justify-end gap-3">
-                <button onClick={closeConfirm} className="px-4 py-2 bg-white/5 rounded-md">Cancel</button>
-                <button onClick={() => handleDelete(confirmId)} disabled={deletingId === confirmId} className="px-4 py-2 bg-red-600 text-white rounded-md">{deletingId === confirmId ? 'Deleting...' : 'Delete'}</button>
+                <button onClick={closeConfirm} className="px-4 py-2 bg-white/5 rounded-md cursor-pointer hover:opacity-90">Cancel</button>
+                <button onClick={() => handleDelete(confirmId)} disabled={deletingId === confirmId} className="px-4 py-2 bg-red-600 text-white rounded-md hover:opacity-90 cursor-pointer disabled:cursor-not-allowed">{deletingId === confirmId ? 'Deleting...' : 'Delete'}</button>
               </div>
             </div>
           </div>
