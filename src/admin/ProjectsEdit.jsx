@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { getProjectById, updateProject, API_HOST } from "../api/ProjectApi";
+import SuccessModal from "../components/SuccessModal";
 
 export default function ProjectsEdit() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ export default function ProjectsEdit() {
   const [existingImageUrl, setExistingImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -77,17 +78,18 @@ export default function ProjectsEdit() {
     setError("");
     updateProject(id, { title, description, status, image: imageFile })
       .then(() => {
-        setSuccess("Project updated successfully.");
-        // show success briefly then navigate
-        setTimeout(() => navigate("/dashboard/projects", { state: { flash: { type: 'success', message: 'Project updated successfully.' } } }), 900);
+        setShowSuccessModal(true);
       })
       .catch((err) => {
         console.error(err);
         setError(err?.response?.data?.message || err.message || "Failed to update project");
-        // also clear any previous success
-        setSuccess("");
       })
       .finally(() => setLoading(false));
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    navigate("/dashboard/projects");
   };
 
   return (
@@ -132,7 +134,6 @@ export default function ProjectsEdit() {
             </div>
           </div>
 
-          {success && <div className="rounded-md bg-emerald-600/20 border border-emerald-600 text-emerald-200 px-3 py-2">{success}</div>}
           <div className="flex items-center gap-3">
             <button type="submit" disabled={loading} className="px-4 py-2 bg-cyan-500 text-black rounded-lg font-semibold disabled:opacity-60">{loading ? 'Saving...' : 'Save'}</button>
             <button type="button" onClick={() => navigate(-1)} className="px-4 py-2 bg-white/5 rounded-lg">Cancel</button>
@@ -140,6 +141,13 @@ export default function ProjectsEdit() {
           {error && <div className="text-sm text-red-400 mt-2">{error}</div>}
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleSuccessModalClose}
+        title="Project Updated Successfully"
+        message="The project information has been updated. You will be redirected to the projects list."
+      />
     </AdminLayout>
   );
 }

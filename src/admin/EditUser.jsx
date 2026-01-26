@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AdminLayout from "./AdminLayout";
 import { useNavigate, useParams } from "react-router-dom";
 import { getUser, updateUser } from "../api/userManagement";
+import SuccessModal from "../components/SuccessModal";
 
 export default function EditUser() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function EditUser() {
   const [department, setDepartment] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // Fetch user data
   useEffect(() => {
@@ -102,12 +104,17 @@ export default function EditUser() {
         }
 
         await updateUser(id, updateData);
-        navigate("/dashboard/users");
+        setShowSuccessModal(true);
       } catch (error) {
         console.error("Error updating user:", error);
         setErrors({ submit: "Failed to update user. Please try again." });
       }
     }
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+    navigate("/dashboard/users");
   };
 
   if (isLoading) {
@@ -256,6 +263,13 @@ export default function EditUser() {
           </div>
         </form>
       </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleSuccessModalClose}
+        title="User Updated Successfully"
+        message="The user information has been updated. You will be redirected to the users list."
+      />
     </AdminLayout>
   );
 }

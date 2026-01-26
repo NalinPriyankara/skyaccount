@@ -1,11 +1,39 @@
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X, Users } from "lucide-react";
+import { logout } from "../api/userManagement";
+import SignOutModal from "../components/SignOutModal";
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    } finally {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/signin');
+    }
+  };
+
+  const handleSignOutClick = () => {
+    setShowSignOutModal(true);
+  };
+
+  const confirmSignOut = () => {
+    setShowSignOutModal(false);
+    handleSignOut();
+  };
+
+  const cancelSignOut = () => {
+    setShowSignOutModal(false);
+  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex">
@@ -18,7 +46,7 @@ export default function AdminLayout({ children }) {
           <div className="text-lg font-black">Admin</div>
         </div>
         <div>
-          <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); }} className="p-2 rounded-md hover:bg-white/5">
+          <button onClick={handleSignOutClick} className="p-2 rounded-md hover:bg-white/5">
             <LogOut className="w-4 h-4" />
           </button>
         </div>
@@ -69,7 +97,7 @@ export default function AdminLayout({ children }) {
           <div className="mb-4 px-3">
             <p className="text-white font-medium">{user.first_name} {user.last_name}</p>
           </div>
-          <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); }} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+          <button onClick={handleSignOutClick} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
             <LogOut className="w-4 h-4" />
             <span className="text-sm">Sign out</span>
           </button>
@@ -129,7 +157,7 @@ export default function AdminLayout({ children }) {
             <div className="mb-4 px-3">
               <p className="text-white font-medium">{user.first_name} {user.last_name}</p>
             </div>
-            <button onClick={() => { localStorage.removeItem('token'); localStorage.removeItem('user'); navigate('/signin'); setOpen(false); }} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+            <button onClick={() => { handleSignOutClick(); setOpen(false); }} className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
               <LogOut className="w-4 h-4" />
               <span className="text-sm">Sign out</span>
             </button>
@@ -140,6 +168,12 @@ export default function AdminLayout({ children }) {
       <main className="flex-1 pt-16 md:pt-0">
         {children}
       </main>
+
+      <SignOutModal
+        isOpen={showSignOutModal}
+        onClose={cancelSignOut}
+        onConfirm={confirmSignOut}
+      />
     </div>
   );
 }
