@@ -66,3 +66,12 @@ export const deleteUser = async (id) => {
     throw error.response?.data || error;
   }
 };
+
+export const logout = async () => {
+  try {
+    const response = await api.post(`${AUTH_URL}/logout`);
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error;
+  }
+};

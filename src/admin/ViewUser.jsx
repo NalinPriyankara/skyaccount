@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AdminLayout from "./AdminLayout";
 import { getUsers, deleteUser } from "../api/userManagement";
+import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 
 export default function ViewUser() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -27,18 +30,29 @@ export default function ViewUser() {
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
     const user = users.find(u => u.id === id);
-    const ok = window.confirm(`Delete user ${user.email}?`);
-    if (!ok) return;
+    setUserToDelete(user);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!userToDelete) return;
 
     try {
-      await deleteUser(id);
-      setUsers((prev) => prev.filter((u) => u.id !== id));
+      await deleteUser(userToDelete.id);
+      setUsers((prev) => prev.filter((u) => u.id !== userToDelete.id));
+      setShowDeleteModal(false);
+      setUserToDelete(null);
     } catch (err) {
       console.error("Error deleting user:", err);
       alert("Failed to delete user. Please try again.");
     }
+  };
+
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setUserToDelete(null);
   };
 
   const getRoleColor = (role) => {
@@ -173,6 +187,13 @@ export default function ViewUser() {
           </div>
         )}
       </div>
+
+      <DeleteConfirmationModal
+        isOpen={showDeleteModal}
+        onClose={cancelDelete}
+        onConfirm={confirmDelete}
+        user={userToDelete}
+      />
     </AdminLayout>
   );
 }
