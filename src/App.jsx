@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
+import { ProtectedRoute, PublicRoute } from "./components/ProtectedRoute";
 
 // Lazy loading page components
 const Home = lazy(() => import("./pages/Home"));
@@ -52,24 +53,24 @@ function App() {
       
       <Suspense fallback={<PageLoader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/services" element={<Service />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
+          <Route path="/about" element={<PublicRoute><About /></PublicRoute>} />
+          <Route path="/projects" element={<PublicRoute><Projects /></PublicRoute>} />
+          <Route path="/services" element={<PublicRoute><Service /></PublicRoute>} />
+          <Route path="/contact" element={<PublicRoute><Contact /></PublicRoute>} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/projects" element={<DashboardProjects />} />
-          <Route path="/dashboard/projects/new" element={<DashboardProjectsForm />} />
-          <Route path="/dashboard/projects/:id/edit" element={<DashboardProjectsEdit />} />
-          <Route path="/dashboard/feedbacks" element={<DashboardFeedbacks />} />
-          <Route path="/dashboard/feedbacks/new" element={<DashboardFeedbacksForm />} />
-          <Route path="/dashboard/contacts" element={<DashboardContacts />} />
-          <Route path="/dashboard/contacts/new" element={<DashboardContactsForm />} />
-          <Route path="/dashboard/users" element={<ViewUser />} />
-          <Route path="/dashboard/users/new" element={<AddUser />} />
-          <Route path="/dashboard/users/:id/edit" element={<EditUser />} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/dashboard/projects" element={<ProtectedRoute><DashboardProjects /></ProtectedRoute>} />
+          <Route path="/dashboard/projects/new" element={<ProtectedRoute><DashboardProjectsForm /></ProtectedRoute>} />
+          <Route path="/dashboard/projects/:id/edit" element={<ProtectedRoute><DashboardProjectsEdit /></ProtectedRoute>} />
+          <Route path="/dashboard/feedbacks" element={<ProtectedRoute><DashboardFeedbacks /></ProtectedRoute>} />
+          <Route path="/dashboard/feedbacks/new" element={<ProtectedRoute><DashboardFeedbacksForm /></ProtectedRoute>} />
+          <Route path="/dashboard/contacts" element={<ProtectedRoute><DashboardContacts /></ProtectedRoute>} />
+          <Route path="/dashboard/contacts/new" element={<ProtectedRoute><DashboardContactsForm /></ProtectedRoute>} />
+          <Route path="/dashboard/users" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
+          <Route path="/dashboard/users/new" element={<ProtectedRoute><AddUser /></ProtectedRoute>} />
+          <Route path="/dashboard/users/:id/edit" element={<ProtectedRoute><EditUser /></ProtectedRoute>} />
         </Routes>
       </Suspense>
     </MainLayout>
