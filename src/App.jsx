@@ -17,6 +17,7 @@ const ResetPassword = lazy(() => import("./admin/ResetPassword"));
 const Dashboard = lazy(() => import("./admin/Dashboard"));
 const DashboardFeedbacks = lazy(() => import("./admin/Feedbacks"));
 const DashboardContacts = lazy(() => import("./admin/Contacts"));
+const EditContact = lazy(() => import("./admin/EditContact"));
 const DashboardProjects = lazy(() => import("./admin/Projects"));
 const DashboardProjectsForm = lazy(() => import("./admin/ProjectsForm"));
 const DashboardFeedbacksForm = lazy(() => import("./admin/FeedbacksForm"));
@@ -68,6 +69,7 @@ function App() {
           <Route path="/dashboard/feedbacks/new" element={<ProtectedRoute><DashboardFeedbacksForm /></ProtectedRoute>} />
           <Route path="/dashboard/contacts" element={<ProtectedRoute><DashboardContacts /></ProtectedRoute>} />
           <Route path="/dashboard/contacts/new" element={<ProtectedRoute><DashboardContactsForm /></ProtectedRoute>} />
+          <Route path="/dashboard/contacts/:id/edit" element={<ProtectedRoute><EditContact /></ProtectedRoute>} />
           <Route path="/dashboard/users" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
           <Route path="/dashboard/users/new" element={<ProtectedRoute><AddUser /></ProtectedRoute>} />
           <Route path="/dashboard/users/:id/edit" element={<ProtectedRoute><EditUser /></ProtectedRoute>} />

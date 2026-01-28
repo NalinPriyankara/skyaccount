@@ -1,16 +1,13 @@
 import React from 'react';
 
-export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm, user }) {
-  if (!isOpen || !user) return null;
+export default function DeleteConfirmationModal({ isOpen, onClose, onConfirm, title = "Confirm Delete", message }) {
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="bg-[#050505] border border-white/10 rounded-lg p-6 max-w-md w-full mx-4">
-        <h3 className="text-lg font-semibold text-white mb-4">Confirm Delete</h3>
-        <p className="text-zinc-300 mb-6">
-          Are you sure you want to delete the user <span className="font-medium text-white">{user.first_name} {user.last_name}</span> ({user.email})?
-          This action cannot be undone.
-        </p>
+        <h3 className="text-lg font-semibold text-white mb-4">{title}</h3>
+        <p className="text-zinc-300 mb-6">{message}</p>
         <div className="flex gap-3 justify-end">
           <button
             onClick={onClose}
