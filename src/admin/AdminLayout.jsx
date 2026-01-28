@@ -1,14 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X, Users } from "lucide-react";
+import { Home, Folder, MessageCircle, Mail, LogOut, Menu, X, Users, Image } from "lucide-react";
 import { logout } from "../api/userManagement";
 import SignOutModal from "../components/SignOutModal";
+import { getProjects } from "../api/ProjectApi";
+import { getFeedbacks } from "../api/FeedbackApi";
+import { getLogos } from "../api/LogoApi";
 
 export default function AdminLayout({ children }) {
   const [open, setOpen] = useState(false);
   const [showSignOutModal, setShowSignOutModal] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') || '{}');
+  const [projectsCount, setProjectsCount] = useState(null);
+  const [feedbacksCount, setFeedbacksCount] = useState(null);
+  const [logosCount, setLogosCount] = useState(null);
+
+  useEffect(() => {
+    let mounted = true;
+    Promise.all([
+      getProjects().then((res) => res.data || []),
+      getFeedbacks(),
+      getLogos(),
+    ])
+      .then(([projects, feedbacks, logos]) => {
+        if (!mounted) return;
+        setProjectsCount(Array.isArray(projects) ? projects.length : (projects?.data?.length || 0));
+        setFeedbacksCount(Array.isArray(feedbacks) ? feedbacks.length : (feedbacks?.data?.length || 0));
+        setLogosCount(Array.isArray(logos) ? logos.length : (logos?.data?.length || 0));
+      })
+      .catch(() => {
+        if (!mounted) return;
+        setProjectsCount(0);
+        setFeedbacksCount(0);
+        setLogosCount(0);
+      });
+    return () => (mounted = false);
+  }, []);
 
   const handleSignOut = async () => {
     try {
@@ -52,7 +80,7 @@ export default function AdminLayout({ children }) {
         </div>
       </div>
 
-      <aside className="w-72 bg-black/60 border-r border-white/5 p-6 hidden md:flex flex-col">
+      <aside className="w-72 bg-black/60 border-r border-white/5 p-6 hidden md:flex md:fixed md:inset-y-0 md:left-0 md:w-72 flex-col overflow-y-auto">
         <div className="mb-8">
           <h3 className="text-2xl font-black">Admin</h3>
           <p className="text-sm text-zinc-400">Control Panel</p>
@@ -76,6 +104,12 @@ export default function AdminLayout({ children }) {
               <Link to="/dashboard/feedbacks" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
                 <MessageCircle className="w-5 h-5 text-cyan-400" />
                 <span className="font-bold">Feedbacks</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/logos" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                <Image className="w-5 h-5 text-cyan-400" />
+                <span className="font-bold">Logos</span>
               </Link>
             </li>
             <li>
@@ -139,6 +173,12 @@ export default function AdminLayout({ children }) {
                 </Link>
               </li>
               <li>
+                <Link to="/dashboard/logos" onClick={() => setOpen(false)} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                  <Image className="w-5 h-5 text-cyan-400" />
+                  <span className="font-bold">Logos</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/dashboard/users" onClick={() => setOpen(false)} className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
                   <Users className="w-5 h-5 text-cyan-400" />
                   <span className="font-bold">User Management</span>
@@ -165,7 +205,7 @@ export default function AdminLayout({ children }) {
         </aside>
       </div>
 
-      <main className="flex-1 pt-16 md:pt-0">
+      <main className="flex-1 pt-16 md:pt-0 md:ml-72">
         {children}
       </main>
 

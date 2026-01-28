@@ -7,6 +7,7 @@ import SuccessModal from "../components/SuccessModal";
 export default function FeedbacksForm() {
   const navigate = useNavigate();
   const [author, setAuthor] = useState("");
+  const [position, setPosition] = useState("");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function FeedbacksForm() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    createFeedback({ author, rating: Number(rating), message })
+    createFeedback({ author, position, rating: Number(rating), message })
       .then(() => {
         setShowSuccessModal(true);
       })
@@ -41,6 +42,10 @@ export default function FeedbacksForm() {
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Author</label>
             <input value={author} onChange={(e) => setAuthor(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+          </div>
+          <div>
+            <label className="block text-sm text-zinc-400 mb-1">Position (optional)</label>
+            <input value={position} onChange={(e) => setPosition(e.target.value)} className="w-full p-3 rounded-lg bg-accent/20 text-white placeholder:text-zinc-400 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
           </div>
           <div>
             <label className="block text-sm text-zinc-400 mb-1">Rating (1-5)</label>
