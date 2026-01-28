@@ -1,52 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Star } from "lucide-react";
+import { getFeedbacks } from "../api/FeedbackApi";
+import user from '../assets/avtr.jpg';
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-const testimonials = [
-  {
-    name: "John Carter",
-    role: "Operational Manager",
-    image: "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/m1.jpg",
-    text: "The real-time data visibility provided by Sky Smart Technology helped us reduce downtime by 30% in just three months. Their support team is world-class.",
-    rating: 5,
-    company: "Future Mfg.",
-    stat: "30% Lower Downtime"
-  },
-  {
-    name: "Michael Chen",
-    role: "Operations Director",
-    image: "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/m2.jpg",
-    text: "A truly future-ready platform. The real-time visibility we gained into our energy consumption helped us reduce costs significantly. Highly recommended.",
-    rating: 5,
-    company: "TechGlobal",
-    stat: "22% Energy Savings"
-  },
-  {
-    name: "Sarah Williams",
-    role: "Factory Lead",
-    image: "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/m3.jpg",
-    text: "Working with the Sky team was seamless. They understood our complex requirements and delivered a bespoke solution that works from day one.",
-    rating: 5,
-    company: "BuildCorp",
-    stat: "100% Reliable Deployment"
-  },
-  {
-    name: "David Miller",
-    role: "CTO",
-    image: "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/m1.jpg",
-    text: "The scalability of this architecture is unmatched. We expanded to three new sites without a single hiccup in our data pipeline.",
-    rating: 5,
-    company: "InnovateX",
-    stat: "Instant ROI Realized"
-  }
+const defaultTestimonials = [
+  { name: 'Customer A', role: 'Manager', image: user, text: 'Great product.', rating: 5, company: '', stat: '' },
+  { name: 'Customer B', role: 'Engineer', image: user, text: 'Solid service.', rating: 5, company: '', stat: '' },
 ];
 
+function generateAvatarDataUrl(name) {
+  const initials = (name || '')
+    .split(' ')
+    .map((s) => s[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase() || '?';
+
+  const n = (name || '').split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+  const hues = [200, 180, 220, 260, 140, 320];
+  const hue = hues[n % hues.length];
+  const bg = `hsl(${hue} 60% 30%)`;
+  const fg = '#ffffff';
+
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><rect width='100%' height='100%' fill='${bg}' rx='18' ry='18'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-size='40' fill='${fg}'>${initials}</text></svg>`;
+  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
 export default function Testimonials() {
+  const [items, setItems] = useState(defaultTestimonials);
+  useEffect(() => {
+    let mounted = true;
+    getFeedbacks()
+      .then((data) => {
+        if (!mounted) return;
+        if (!Array.isArray(data) || data.length === 0) return;
+        const mapped = data.map((f) => ({
+          name: f.author || f.name || 'Anonymous',
+          role: f.position || f.role || '',
+          // use project asset avatar for all feedbacks
+          image: user,
+          text: f.message || f.text || f.body || '',
+          rating: Number(f.rating) || 0,
+          company: f.company || '',
+          stat: f.stat || ''
+        }));
+        setItems(mapped);
+      })
+      .catch((err) => {
+        console.warn('Failed to load feedbacks for testimonials', err);
+      });
+    return () => { mounted = false };
+  }, []);
+
   return (
     <section className="relative py-32 bg-transparent overflow-hidden z-10">
       {/* Decorative Background Elements */}
@@ -135,7 +146,7 @@ export default function Testimonials() {
           }}
           className="pb-32! testimonials-swiper"
         >
-          {testimonials.map((t, i) => (
+          {items.map((t, i) => (
             <SwiperSlide key={i} className="h-auto">
               <motion.div 
                 whileHover={{ y: -5 }}

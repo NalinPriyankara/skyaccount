@@ -71,7 +71,10 @@ export default function Feedbacks() {
             {feedbacks.map((f) => (
               <div key={f.id} className="p-4 rounded-2xl bg-accent/20 border border-white/5 flex flex-col">
                 <div className="flex items-center justify-between mb-3">
-                  <div className="text-sm text-zinc-100 font-semibold">{f.author}</div>
+                  <div>
+                    <div className="text-sm text-zinc-100 font-semibold">{f.author}</div>
+                    {f.position && <div className="text-xs text-zinc-400">{f.position}</div>}
+                  </div>
                   <Stars value={Number(f.rating) || 0} />
                 </div>
                 <div className="text-sm text-zinc-300">{f.message || f.text || f.body}</div>

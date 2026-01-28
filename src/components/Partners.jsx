@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-const logos = [
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l5.png",
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l4.png",
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l3.png",
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l2.png",
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l5.png",
-  "https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/l4.png",
-];
+import { getLogos } from "../api/LogoApi";
+import { API_HOST } from "../api/ProjectApi";
 
 export default function Partners() {
+  const [logos, setLogos] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    getLogos()
+      .then((res) => {
+        if (!mounted) return;
+        const items = Array.isArray(res) ? res : (res?.data || []);
+        const urls = items
+          .map((item) => {
+            const src = item?.url || item?.path || item?.filename || item?.image || item?.logo || item?.file || item?.src;
+            if (!src) return null;
+            const s = String(src);
+            if (/^https?:\/\//i.test(s) || s.startsWith("//")) return s;
+            const clean = s.replace(/^\/+/, "");
+            if (clean.startsWith("storage/")) return `${API_HOST}/${clean}`;
+            return `${API_HOST}/storage/${clean}`;
+          })
+          .filter(Boolean);
+        setLogos(urls);
+      })
+      .catch(() => setLogos([]))
+      .finally(() => mounted && setLoading(false));
+    return () => (mounted = false);
+  }, []);
+
+  const list = logos.length ? logos : [];
+
   return (
     <section className="py-24 bg-transparent relative overflow-hidden z-10">
       <div className="max-w-350 mx-auto px-6 mb-16 relative">
@@ -31,39 +53,36 @@ export default function Partners() {
       </div>
 
       <div className="relative w-full overflow-hidden">
-        {/* Advanced Glass Masking */}
         <div className="absolute left-0 top-0 bottom-0 w-48 bg-linear-to-r from-black to-transparent z-10 invisible md:block" />
         <div className="absolute right-0 top-0 bottom-0 w-48 bg-linear-to-l from-black to-transparent z-10 invisible md:block" />
 
-        {/* Marquee Container with 3D feel */}
         <div className="flex w-full overflow-hidden group py-10">
           <div className="flex space-x-24 animate-marquee whitespace-nowrap items-center">
-            {logos.concat(logos).map((logo, i) => (
+            {list.concat(list).map((logo, i) => (
               <motion.div 
                 key={i} 
-                whileHover={{ scale: 1.1, filter: "brightness(1.5) grayscale(0%)" }}
-                className="h-16 w-40 flex items-center justify-center filter grayscale brightness-0 invert opacity-20 hover:opacity-100 transition-all duration-500 cursor-pointer"
+                whileHover={{ scale: 1.06, filter: "brightness(1.05)" }}
+                className="h-20 w-48 flex items-center justify-center opacity-100 transition-all duration-300 cursor-pointer"
               >
-                <img src={logo} alt={`Partner ${i}`} className="max-h-10 w-auto object-contain" loading="lazy" />
+                <img src={logo} alt={`Partner ${i}`} className="max-h-16 w-auto object-contain" loading="lazy" />
               </motion.div>
             ))}
           </div>
           
            <div className="flex space-x-24 animate-marquee whitespace-nowrap items-center" aria-hidden="true">
-            {logos.concat(logos).map((logo, i) => (
+            {list.concat(list).map((logo, i) => (
               <motion.div 
-                key={i} 
-                whileHover={{ scale: 1.1, filter: "brightness(1.5) grayscale(0%)" }}
-                className="h-16 w-40 flex items-center justify-center filter grayscale brightness-0 invert opacity-20 hover:opacity-100 transition-all duration-500 cursor-pointer"
+                key={i + 9999} 
+                whileHover={{ scale: 1.06, filter: "brightness(1.05)" }}
+                className="h-20 w-48 flex items-center justify-center opacity-100 transition-all duration-300 cursor-pointer"
               >
-                <img src={logo} alt={`Partner ${i}`} className="max-h-10 w-auto object-contain" loading="lazy" />
+                <img src={logo} alt={`Partner ${i}`} className="max-h-16 w-auto object-contain" loading="lazy" />
               </motion.div>
             ))}
           </div>
         </div>
       </div>
       
-      {/* Visual connection line */}
       <div className="max-w-300 mx-auto h-px bg-linear-to-r from-transparent via-white/10 to-transparent mt-12" />
 
       <style>{`

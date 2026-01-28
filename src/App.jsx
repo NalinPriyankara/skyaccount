@@ -22,6 +22,8 @@ const DashboardProjectsForm = lazy(() => import("./admin/ProjectsForm"));
 const DashboardFeedbacksForm = lazy(() => import("./admin/FeedbacksForm"));
 const DashboardContactsForm = lazy(() => import("./admin/ContactsForm"));
 const DashboardProjectsEdit = lazy(() => import("./admin/ProjectsEdit"));
+const DashboardLogos = lazy(() => import("./admin/Logos"));
+const DashboardLogosForm = lazy(() => import("./admin/LogosForm"));
 const AddUser = lazy(() => import("./admin/AddUser"));
 const EditUser = lazy(() => import("./admin/EditUser"));
 const ViewUser = lazy(() => import("./admin/ViewUser"));
@@ -66,6 +68,8 @@ function App() {
           <Route path="/dashboard/projects/:id/edit" element={<ProtectedRoute><DashboardProjectsEdit /></ProtectedRoute>} />
           <Route path="/dashboard/feedbacks" element={<ProtectedRoute><DashboardFeedbacks /></ProtectedRoute>} />
           <Route path="/dashboard/feedbacks/new" element={<ProtectedRoute><DashboardFeedbacksForm /></ProtectedRoute>} />
+          <Route path="/dashboard/logos" element={<ProtectedRoute><DashboardLogos /></ProtectedRoute>} />
+          <Route path="/dashboard/logos/new" element={<ProtectedRoute><DashboardLogosForm /></ProtectedRoute>} />
           <Route path="/dashboard/contacts" element={<ProtectedRoute><DashboardContacts /></ProtectedRoute>} />
           <Route path="/dashboard/contacts/new" element={<ProtectedRoute><DashboardContactsForm /></ProtectedRoute>} />
           <Route path="/dashboard/users" element={<ProtectedRoute><ViewUser /></ProtectedRoute>} />
