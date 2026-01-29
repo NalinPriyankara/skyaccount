@@ -105,7 +105,7 @@ const About = () => {
       <PageCover title="About Us" />
 
       {/* Hero Content Section */}
-      <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen flex items-center justify-center py-12">
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen flex items-center justify-center py-24">
         {/* Subtle Glows */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full -z-10" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full -z-10" />
@@ -125,7 +125,7 @@ const About = () => {
                     {[1,2].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />)}
                 </div>
                 <span className="text-cyan-400 tracking-[0.4em] text-[10px] font-black uppercase">
-                  Legacy Node [EST-2008]
+                  Legacy Node [EST-2006]
                 </span>
               </div>
 
@@ -135,14 +135,14 @@ const About = () => {
               </h2>
 
               <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
-                Founded in 2008, Sky Smart Technology has emerged as a powerhouse in industrial automation and IoT research. 
+                Founded in 2006, Sky Smart Technology has emerged as a powerhouse in industrial automation and IoT research. 
                 We don't just build sensors; we build the nervous system of modern industry. Our mission is to transform 
                 raw factory floor data into actionable intelligence, scaling across South Asia and beyond.
               </p>
 
               <div className="grid grid-cols-2 gap-8 border-t border-white/5 pt-10">
                   <div>
-                    <h4 className="text-3xl font-black text-white mb-1">2008</h4>
+                    <h4 className="text-3xl font-black text-white mb-1">2006</h4>
                     <p className="text-[10px] font-black tracking-widest text-cyan-400 uppercase">Core Initialization</p>
                   </div>
                   <div>
@@ -162,6 +162,7 @@ const About = () => {
             >
                <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[4/3] md:aspect-square max-h-[440px] md:max-h-[540px]">
+                 {/* <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[320px] sm:h-[384px] md:h-[432px]"> */}
                   <img
                     src={ind_06}
                     alt="Industrial Research"
@@ -191,7 +192,7 @@ const About = () => {
       </section>
 
       {/* Integrated Components */}
-      <div className="bg-black/30">
+      <div>
         <VisionMission />
       </div>
       
@@ -203,7 +204,7 @@ const About = () => {
             <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Our Technology</span>
             <h3 className="text-3xl md:text-4xl font-black mb-4">Core Technologies & Approach</h3>
             <p className="text-gray-400 max-w-3xl mx-auto">
-              We design and deploy end‑to‑end IoT ecosystems built for industrial scale and reliability: hardened edge devices, secure cloud pipelines, and production‑grade analytics. Our approach pairs lightweight, low‑latency telemetry with robust data governance so customers gain real‑time insights while maintaining operational security and predictable ROI.
+              We design and deploy industrial-focused IoT ecosystems built for reliability and real-time performance: hardened edge devices, secure cloud connectivity, and production-oriented analytics. Our approach pairs efficient, low-latency telemetry with disciplined data governance so customers gain actionable insights, maintain operational security, and realize predictable returns on investment.
             </p>
           </motion.div>
         </div>
@@ -217,7 +218,7 @@ const About = () => {
             <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Milestones</span>
             <h3 className="text-3xl md:text-4xl font-black mb-4">Our Journey</h3>
             <p className="text-gray-400 max-w-3xl mx-auto">
-              Since 2018 we've moved from prototype edge modules to region‑wide production networks—initial field pilots, first commercial deployments, regional expansion, and the addition of predictive AI services. Each milestone reflects measurable improvements in uptime, throughput, or cost‑per‑unit for our partners and frames how we scale practical automation projects.
+              Since 2015 we’ve evolved from early electronics and prototype IoT solutions into a trusted partner for industrial automation and real-time monitoring. From initial field pilots and first commercial deployments through regional expansions, each milestone reflects measurable improvements in operational efficiency for our partners and frames how we scale practical automation and software projects.
             </p>
           </motion.div>
         </div>
@@ -231,7 +232,7 @@ const About = () => {
             <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-3">Impact</span>
             <h4 className="text-3xl md:text-3xl font-black mb-3">Awards & Sustainability</h4>
             <p className="text-gray-400 max-w-3xl mx-auto">
-              Our engineering choices prioritize efficiency and longevity: energy‑smart sensors, software updates that extend device life, and secure data minimization practices. These decisions reduce operational waste and total cost of ownership for customers while helping industrial operators meet tougher sustainability targets.
+              At Sky Smart Technology, our engineering choices emphasize efficiency and longevity — deploying energy-smart sensors, modular designs that extend device life, and secure software practices. These decisions help reduce operational waste and total cost of ownership for customers while enabling industrial operators to pursue stronger sustainability outcomes through better data visibility and optimized processes.
             </p>
           </motion.div>
         </div>
@@ -239,7 +240,7 @@ const About = () => {
 
       <OurValuesSection />
       
-      <div className="mb-24">
+      <div className="mb-24 pt-16 px-2">
         <StatisticsSection />
       </div>
 

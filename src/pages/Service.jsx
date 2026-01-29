@@ -60,11 +60,6 @@ const services = [
         description: "Comprehensive IT consulting and holistic technology strategies to drive innovation across your entire organization.",
         icon: Globe,
     },
-    // {
-    //   title: "AI and Big Data",
-    //   description: "Create intelligent solutions leveraging artificial intelligence and big data analytics to drive informed decision-making and business growth.",
-    //   icon: BrainCircuit,
-    // },
     {
         title: "Support & Maintenance",
         description: "Provide 24/7, global support and technical maintenace services to ensure your systems run smoothly and efficiently.",
