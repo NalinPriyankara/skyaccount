@@ -15,7 +15,7 @@ const DeviceShowcase = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-cyan-400 font-mono text-[10px] uppercase tracking-[0.5em] mb-4 block"
           >
-            Omni-Channel Control
+            Multi-Device Access
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -125,17 +125,18 @@ const DeviceShowcase = () => {
                  <span className="italic">Anywhere in the World</span>
                </h3>
                <p className="text-zinc-400 leading-relaxed font-medium">
-                 Sky Smart doesn't stop at your facility. Our custom-engineered web apps adapt perfectly to phones and tablets, providing real-time telemetry and emergency command protocols from the palm of your hand.
+                 Sky Smart solutions go beyond a single device. Our web and mobile applications adapt seamlessly to phones and tablets, giving users secure access to system data and controls wherever they are.
                </p>
             </motion.div>
 
             <div className="grid grid-cols-2 gap-6">
                 {[
-                    { label: "Adaptive UI", desc: "Fluid layouts for every pixel" },
-                    { label: "Real-time Sync", desc: "Latency below 50ms" },
-                    { label: "Secure Link", desc: "End-to-end encryption" },
-                    { label: "Offline Mode", desc: "Persistent critical data" }
-                ].map((stat, i) => (
+                  { label: "Adaptive UI", desc: "Responsive layouts across all devices" },
+                  { label: "Live Sync", desc: "Consistent data across platforms" },
+                  { label: "Secure Access", desc: "Protected user authentication" },
+                  { label: "Offline Support", desc: "Access critical data when needed" }
+                ]
+                .map((stat, i) => (
                     <motion.div 
                         key={i}
                         initial={{ opacity: 0, y: 10 }}

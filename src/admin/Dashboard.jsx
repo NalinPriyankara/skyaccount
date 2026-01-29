@@ -5,12 +5,14 @@ import { Folder, MessageCircle, Mail } from "lucide-react";
 import { getProjects } from "../api/ProjectApi";
 import { getFeedbacks } from "../api/FeedbackApi";
 import { getLogos } from "../api/LogoApi";
+import { getContacts } from "../api/ContactApi";
 
 export default function Dashboard() {
   const [projectsCount, setProjectsCount] = useState(null);
   const [feedbackCount, setFeedbackCount] = useState(null);
   const [recent, setRecent] = useState([]);
   const [logosCount, setLogosCount] = useState(null);
+  const [contactsCount, setContactsCount] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -23,13 +25,15 @@ export default function Dashboard() {
       getProjects().then((res) => res.data || []),
       getFeedbacks(),
       getLogos(),
+      getContacts(),
     ])
-      .then(([projects, feedbacks, logos]) => {
+      .then(([projects, feedbacks, logos, contacts]) => {
         if (!mounted) return;
         setProjectsCount(projects.length);
         setFeedbackCount(Array.isArray(feedbacks) ? feedbacks.length : 0);
         setRecent(projects.slice(0, 3));
         setLogosCount(Array.isArray(logos) ? logos.length : (logos?.data?.length || 0));
+        setContactsCount(Array.isArray(contacts) ? contacts.length : (contacts?.data?.length || 0));
       })
       .catch((err) => {
         console.error(err);
@@ -60,8 +64,8 @@ export default function Dashboard() {
 
           <div className="p-6 rounded-2xl bg-accent/20 border border-cyan-600">
             <div className="text-sm text-zinc-100 uppercase tracking-widest mb-2">Contact Messages</div>
-            <div className="text-2xl font-bold">N/A</div>
-            <p className="text-sm text-zinc-400 mt-3">Contact backend not configured.</p>
+            <div className="text-2xl font-bold">{loading ? '—' : (contactsCount ?? '—')}</div>
+            <p className="text-sm text-zinc-400 mt-3">Incoming contact inquiries.</p>
           </div>
           
           <div className="p-6 rounded-2xl bg-accent/20 border border-cyan-600">

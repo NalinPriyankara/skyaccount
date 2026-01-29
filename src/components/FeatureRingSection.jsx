@@ -176,7 +176,7 @@ export default function FeatureRingSection() {
                 />
 
                 <p className="text-zinc-500 text-base md:text-lg font-medium leading-relaxed max-w-xl border-l md:border-l-0 lg:border-l border-white/10 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0">
-                    Powering the future with <span className="text-white">cutting-edge technology</span> solutions tailored to your industry needs via our next-gen digital infrastructure.
+                    Powering businesses with <span className="text-white">practical, future-ready technology</span> by delivering reliable software, electronics, and IoT solutions tailored to real-world needs.
                 </p>
             </motion.div>
 

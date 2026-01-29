@@ -1,33 +1,33 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { DollarSign, Zap, Target, Shield, ArrowRight, PlayCircle } from "lucide-react";
+import { Code, Smartphone, Target, Cpu, CircuitBoard, ArrowRight, PlayCircle } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero_slide_1 from "../assets/Hero/ind_01.jpg";
 
 const services = [
   {
-    title: "Eco Investment",
-    icon: <DollarSign className="w-5 h-5" />,
-    text: "Sustainable ROI.",
+    title: "Web & Software Development",
+    icon: <Code className="w-5 h-5" />,
+    text: "Scalable, secure, and user-focused digital solutions.",
     color: "text-cyan-400",
   },
   {
-    title: "Edge Computing",
-    icon: <Zap className="w-5 h-5" />,
-    text: "Zero Latency.",
+    title: "Mobile Application Development",
+    icon: <Smartphone className="w-5 h-5" />,
+    text: "High-performance Android and cross-platform apps.",
     color: "text-cyan-400",
   },
   {
-    title: "Precision AI",
-    icon: <Target className="w-5 h-5" />,
-    text: "Zero Defects.",
+    title: "IoT & Embedded Systems",
+    icon: <Cpu className="w-5 h-5" />,
+    text: "Smart device integration using microcontroller-based systems.",
     color: "text-cyan-400",
   },
   {
-    title: "Cyber Shield",
-    icon: <Shield className="w-5 h-5" />,
-    text: "Secure IP.",
+    title: "Electronic & PCB Design",
+    icon: <CircuitBoard className="w-5 h-5" />,
+    text: "Custom circuit design, PCB layout, and fabrication solutions.",
     color: "text-cyan-400",
   },
 ];
@@ -118,15 +118,14 @@ export default function HeroWithServices() {
 
             {/* Main Headline - Professional & Corporate */}
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[1] mb-8 uppercase">
-              REDEFINING <br />
+              EMPOWERING <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">
-                INTELLIGENCE
+                INNOVATION
               </span>
             </h1>
 
             <p className="text-base md:text-xl text-zinc-400 max-w-xl leading-relaxed mb-12 mx-auto lg:mx-0 font-medium">
-              Transform legacy machinery into <span className="text-white">autonomous neural assets</span>. 
-              We bridge the gap between physical operations and digital insights via next-gen IoT.
+              We bridge physical operations and digital intelligence through <span className="text-white">innovative</span> software and electronics-driven IoT technologies. 
             </p>
 
             {/* Action Buttons */}
@@ -191,9 +190,9 @@ export default function HeroWithServices() {
                       <div className="flex items-end justify-between">
                          <div>
                             <div className="text-cyan-400 text-xs font-mono mb-2 flex items-center gap-2">
-                               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"/> SYSTEM ACTIVE
+                               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"/> SMART SYSTEM READY
                             </div>
-                            <h3 className="text-2xl font-bold text-white">Global Monitoring Output</h3>
+                            <h3 className="text-2xl font-bold text-white">Smart Software & Electronics Solutions</h3>
                          </div>
                          <div className="text-right">
                             <div className="text-3xl font-mono font-bold text-white">99.9%</div>

@@ -38,30 +38,30 @@ const Counter = ({ value }) => {
 const stats = [
   {
     id: 1,
-    value: "500+",
-    label: "Smart Factories",
-    description: "Deployed across automotive, aerospace & energy sectors.",
+    value: "50+",
+    label: "Completed Projects",
+    description: "Software, electronics, and IoT solutions delivered.",
     icon: Factory
   },
   {
     id: 2,
-    value: "20TB",
-    label: "Daily Data Processed",
-    description: "Real-time edge analytics powering instant decisions.",
+    value: "10+",
+    label: "Active Clients",
+    description: "Businesses supported across multiple industries.",
     icon: Cpu
   },
   {
     id: 3,
-    value: "14",
-    label: "Global Hubs",
-    description: "Supporting operations in North America, EU & Asia.",
+    value: "5+",
+    label: "Core Technologies",
+    description: "Web, mobile, embedded systems, IoT, and PCB design.",
     icon: Globe2
   },
   {
     id: 4,
-    value: "95.0%",
-    label: "Unplanned Downtime",
-    description: "Achieved for 95% of our enterprise partners.",
+    value: "100%",
+    label: "Project Commitment",
+    description: "Focused on quality, reliability, and client satisfaction.",
     icon: ShieldCheck
   }
 ];

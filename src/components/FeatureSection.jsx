@@ -91,7 +91,7 @@ export default function FeatureSection() {
               }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1] tracking-tighter text-center lg:text-left uppercase"
             >
-              {["BRIDGING", "DATA &", "DECISIONS."].map((text, i) => (
+              {["CONNECTING", "IDEAS &", "TECHNOLOGY."].map((text, i) => (
                 <motion.div key={i} className="overflow-hidden py-1">
                    <motion.span
                      variants={{
@@ -121,17 +121,37 @@ export default function FeatureSection() {
             transition={{ delay: 0.4 }}
             className="text-base md:text-lg text-zinc-500 mb-12 leading-relaxed max-w-xl font-medium border-l-2 md:border-l-0 lg:border-l-2 border-white/5 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0 text-center lg:text-left"
           >
-            We don't just collect data; <span className="text-white">we transform it</span> into actionable intelligence. 
-            From the factory floor to the top floor, Sky Smart connects your entire operation via <span className="text-cyan-400">proprietary neural networks</span>.
+            We don’t just build technology; <span className="text-white">we make it practical</span> Sky Smart Technology connects software and electronic systems to deliver reliable, 
+            scalable solutions through <span className="text-cyan-400">IoT and embedded system integration</span>.
           </motion.p>
 
           {/* New Advanced Module Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { title: "Predictive Insights", icon: <Activity size={18} />, status: "ONLINE", desc: "AI-driven yield optimization" },
-              { title: "Cloud Native Core", icon: <Cpu size={18} />, status: "STABLE", desc: "Seamless microservices architecture" },
-              { title: "OT/IT Convergence", icon: <Zap size={18} />, status: "SYNCED", desc: "Unified hardware-software stack" },
-              { title: "Cyber Shield", icon: <Radio size={18} />, status: "ENCRYPTED", desc: "Military-grade data protection" }
+              {
+                title: "Smart System Monitoring",
+                icon: <Activity size={18} />,
+                status: "ACTIVE",
+                desc: "Real-time device and system status visibility"
+              },
+              {
+                title: "Scalable Software Core",
+                icon: <Cpu size={18} />,
+                status: "STABLE",
+                desc: "Modular and maintainable application architecture"
+              },
+              {
+                title: "Hardware–Software Integration",
+                icon: <Zap size={18} />,
+                status: "CONNECTED",
+                desc: "Seamless interaction between electronics and software"
+              },
+              {
+                title: "Secure Data Handling",
+                icon: <Radio size={18} />,
+                status: "PROTECTED",
+                desc: "Best-practice security for applications and devices"
+              }
             ].map((item, i) => (
               <motion.div 
                 key={i}

@@ -108,13 +108,6 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 className="flex items-center gap-5 bg-black/40 backdrop-blur-xl border border-white/5 p-4 rounded-xl"
             >
-                <div className="flex -space-x-3">
-                     {[1,2,3,4].map((i) => (
-                         <div key={i} className="w-10 h-10 rounded-lg border-2 border-[#0a0a0a] overflow-hidden">
-                            <img src={`https://xtratheme.com/elementor/smart-home/wp-content/uploads/sites/23/2018/06/m${i%3 + 1}.jpg`} className="w-full h-full object-cover grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all duration-500" alt="Reviewer" />
-                         </div>
-                     ))}
-                </div>
                 <div className="pr-4 border-r border-white/10">
                     <div className="flex text-cyan-400 gap-0.5 mb-0.5">
                         {[1,2,3,4,5].map((s) => <Star key={s} size={10} fill="currentColor" />)}
