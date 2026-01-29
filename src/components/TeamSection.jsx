@@ -23,7 +23,7 @@ const fadeRight = {
 
 const TeamSection = () => {
   return (
-    <section className="bg-transparent px-6 lg:px-20 py-24 overflow-hidden relative z-10">
+    <section className="bg-transparent px-6 lg:px-20 py-2 overflow-hidden relative z-10">
       <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
 
         {/* Left Content */}
@@ -51,19 +51,19 @@ const TeamSection = () => {
           </h2>
 
           <p className="text-gray-400 mb-8 text-lg leading-relaxed">
-            Our diverse team of engineers, data scientists, and industry experts are united by a single mission: 
-            to render the impossible, inevitable. We combine deep domain expertise with cutting-edge 
-            AI research to solve the most complex industrial challenges.
+            Our diverse team of engineers and industry specialists is united by a single mission: 
+            to render the impossible, inevitable. We combine deep domain expertise with advanced 
+            software and intelligent technologies to solve complex industrial challenges.
           </p>
 
-          <motion.a
+          {/* <motion.a
             href="#"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
           >
             Meet the Builders <ArrowRight size={18} className="text-cyan-400" />
-          </motion.a>
+          </motion.a> */}
         </motion.div>
 
         {/* Right Image */}
