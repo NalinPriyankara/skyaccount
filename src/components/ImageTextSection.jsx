@@ -26,7 +26,7 @@ export default function ImageTextSection() {
           >
              <div className="h-px w-10 bg-cyan-400"></div>
              <span className="text-cyan-400 font-black text-[10px] md:text-xs uppercase tracking-[0.3em]">
-                System Architecture Protocol
+                Integrated System Architecture
              </span>
           </motion.div>
           
@@ -47,8 +47,8 @@ export default function ImageTextSection() {
             transition={{ delay: 0.3 }}
             className="text-zinc-500 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto xl:mx-0 font-medium text-center xl:text-left"
           >
-            Transform static signal towers into a <span className="text-white">dynamic digital nexus</span>. 
-            Eliminate communication bottlenecks by instantly routing critical downtime alerts to the right teams.
+            Transform standalone systems into a <span className="text-white">connected digital workflow</span>. 
+            We design solutions that improve system visibility, simplify communication, and help teams respond faster to operational events.
           </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
@@ -57,7 +57,7 @@ export default function ImageTextSection() {
                      <Zap size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Smart Routing</h4>
-                 <p className="text-md text-gray-500">Alerts bypass the hierarchy, reaching engineers directly.</p>
+                 <p className="text-md text-gray-500">Efficient notification flows designed for faster response.</p>
              </div>
 
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -65,7 +65,7 @@ export default function ImageTextSection() {
                      <BarChart3 size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Downtime Analytics</h4>
-                 <p className="text-md text-gray-500">Visualize pareto charts of top failure modes instantly.</p>
+                 <p className="text-md text-gray-500">Clear insights into system performance and issue trends.</p>
              </div>
              
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -73,7 +73,7 @@ export default function ImageTextSection() {
                      <Timer size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Slash MTTR</h4>
-                 <p className="text-md text-gray-500">Reduce Mean Time To Repair by up to 40%.</p>
+                 <p className="text-md text-gray-500">Designed to help reduce resolution time and system delays.</p>
              </div>
 
              <div className="group p-4 bg-black/40 border border-white/10 rounded-xl hover:border-cyan-400/30 transition-all duration-300">
@@ -81,7 +81,7 @@ export default function ImageTextSection() {
                      <CheckCircle2 size={20} />
                  </div>
                  <h4 className="text-white font-bold mb-1">Digital Audit</h4>
-                 <p className="text-md text-gray-500">Full timestamps for every issue resolution step.</p>
+                 <p className="text-md text-gray-500">Track system activities with clear logs and timestamps.</p>
              </div>
           </div>
         </div>

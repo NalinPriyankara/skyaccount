@@ -200,8 +200,8 @@ const Home = () => {
               transition={{ delay: 0.3 }}
               className="text-cyan-100/60 text-lg md:text-2xl font-light tracking-[0.2em] max-w-2xl mx-auto uppercase mt-8"
             >
-              Leading the future of industrial automation through integrated <br/>
-              <span className="text-white font-bold">IoT ecosystems & precision software solutions.</span>
+              Building smarter digital and electronic solutions through <br/>
+              <span className="text-white font-bold">Integrated software, IoT, and embedded system innovation.</span>
             </motion.p>
           </div>
           

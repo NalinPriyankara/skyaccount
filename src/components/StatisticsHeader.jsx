@@ -12,7 +12,7 @@ export default function StatisticsHeader() {
             whileInView={{ opacity: 1, x: 0 }}
             className="text-cyan-400 tracking-[0.4em] text-[10px] font-black uppercase"
           >
-            Network Expansion [SYS-03]
+            Company Growth Overview
           </motion.span>
       </div>
 
@@ -51,7 +51,7 @@ export default function StatisticsHeader() {
         transition={{ delay: 0.4 }}
         className="text-zinc-500 text-sm font-medium tracking-widest uppercase mb-12"
       >
-        Smart Factory Milestones & Infrastructure Scale
+        Technology solutions, projects, and growth milestones
       </motion.p>
 
       <motion.div 

@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { CalendarCheck, Rocket, Globe, Zap, Flag } from "lucide-react";
 
 const timeline = [
-  { year: "2008", title: "Genesis", text: "Founded with a vision to revolutionize industrial data monitoring.", icon: Flag },
-  { year: "2015", title: "Edge Launch", text: "First generation of ultra-low latency Edge IoT devices deployed.", icon: Rocket },
-  { year: "2020", title: "Global Scale", text: "Expansion into Southeast Asia, powering factories across 5 countries.", icon: Globe },
-  { year: "2023", title: "AI Core", text: "Integration of predictive analytics neural networks.", icon: Zap },
-  { year: "2026", title: "Future Ready", text: "Next-gen autonomous factory systems & quantum security.", icon: CalendarCheck }
+  { year: "2008", title: "Foundation", text: "Sky Smart Technology was established with a focus on software and electronics solutions.", icon: Flag },
+  { year: "2015", title: "First Projects", text: "Delivered initial web and electronic system projects for local clients.", icon: Rocket },
+  { year: "2020", title: "IoT Expansion", text: "Expanded into IoT and embedded system development.", icon: Globe },
+  { year: "2023", title: "Product Growth", text: "Developed custom platforms, dashboards, and mobile applications.", icon: Zap },
+  { year: "Future", title: "Looking Ahead", text: "Continuously innovating in software, electronics, and smart systems.", icon: CalendarCheck }
 ];
 
 export default function TimelineSection() {

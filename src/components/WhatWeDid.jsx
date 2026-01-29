@@ -3,10 +3,10 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 import { ArrowRight } from "lucide-react";
 
 const stats = [
-  { value: 92, suffix: "%", label: "Efficiency Boost" },
-  { value: 154, suffix: "+", label: "Factories Automated" },
-  { value: 12, suffix: "M", label: "Data Points/Sec" },
-  { value: 24, suffix: "/7", label: "Support Coverage" }
+  { value: 100, suffix: "%", label: "Project Transparency" },
+  { value: 40, suffix: "+", label: "Systems Delivered" },
+  { value: 5, suffix: "+", label: "Technology Domains" },
+  { value: 24, suffix: "/7", label: "Support Availability" }
 ];
 
 const Counter = ({ from = 0, to, suffix = "", duration = 2 }) => {
@@ -67,7 +67,7 @@ export default function WhatWeDid() {
             </h2>
 
             <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
-              We track every metric to ensure our IoT solutions aren't just functioning, but actively contributing to your bottom line. Precision is our language.
+              We focus on measurable outcomes, ensuring our solutions deliver real value through efficiency, reliability, and thoughtful system design.
             </p>
 
             <motion.button
