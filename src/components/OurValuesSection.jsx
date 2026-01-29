@@ -20,7 +20,7 @@ const values = [
   },
   {
     title: "Practical Innovation",
-    desc: "Developing smart, usable technologies that solve real-world industrial challenges.",
+    desc: "Building smart, usable technologies that solve real-world industrial challenges.",
     icon: Lightbulb,
   },
   {
@@ -75,7 +75,7 @@ const OurValuesSection = () => {
           Core DNA [SYS-02]
         </span>
         <h2 className="text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter">
-          What <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Drives</span> Us
+          What <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-2">Drives</span> Us
         </h2>
       </motion.div>
 
