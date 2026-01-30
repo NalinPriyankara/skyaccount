@@ -56,11 +56,13 @@ const services = [
         title: "Mobile App Development",
         description: "Intuitive, high-performance mobile applications that extend your business reach to every user's fingertips.",
         icon: Smartphone,
+        link: "/mobile-app-development",
     },
     {
         title: "Support & Maintenance",
         description: "Provide 24/7, global support and technical maintenace services to ensure your systems run smoothly and efficiently.",
         icon: Headset,
+        link: "/support-maintenance",
     },
 ];
 
