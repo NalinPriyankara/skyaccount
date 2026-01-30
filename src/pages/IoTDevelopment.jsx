@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Zap, Shield, BarChart3 } from "lucide-react";
 import PageCover from "../components/PageCover";
-import ind_01 from "../assets/Hero/ind_01.jpg";
+import product_1 from "../assets/product_1.jpg";
 
 /* -------------------- Animations -------------------- */
 const fadeUp = {
@@ -17,12 +17,12 @@ const fadeUp = {
 const features = [
     {
         title: "Real-Time Monitoring",
-        description: "Continuous data collection from sensors and devices for instant insights.",
+        description: "Continuous data collection from sensors and devices to deliver instant, actionable insights.",
         icon: BarChart3,
     },
     {
         title: "Edge Computing",
-        description: "Process data at the source for faster response times and reduced latency.",
+        description: "Process data at the source to enable faster response times and reduced latency.",
         icon: Zap,
     },
     {
@@ -71,8 +71,8 @@ export default function IoTDevelopment() {
                                 </div>
 
                                 <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
-                                    Connecting the <br />
-                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-2">Physical World</span>
+                                    Connecting <br />
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-2">The Physical World</span>
                                 </h2>
 
                                 <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
@@ -97,9 +97,10 @@ export default function IoTDevelopment() {
                                 className="relative group"
                             >
                                 <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]">
+                                {/* <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]"> */}
+                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[320px] sm:h-[384px] md:h-[432px]">
                                     <img
-                                        src={ind_01}
+                                        src={product_1}
                                         alt="IoT Development"
                                         className="w-full h-full object-cover brightness-75 hover:grayscale-0 hover:scale-105 transition-all duration-1000"
                                     />
@@ -122,7 +123,7 @@ export default function IoTDevelopment() {
                             <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Key Features</span>
                             <h3 className="text-3xl md:text-4xl font-black mb-4">IoT Capabilities</h3>
                             <p className="text-gray-400 max-w-3xl mx-auto">
-                                Our IoT solutions are built for reliability, security, and performance in demanding industrial environments.
+                                Our IoT solutions are engineered for reliability, security, and performance in demanding industrial environments.
                             </p>
                         </motion.div>
 
@@ -137,9 +138,9 @@ export default function IoTDevelopment() {
                                         whileInView="visible"
                                         viewport={{ once: false, margin: "-10%" }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="bg-black/50 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all"
+                                        className="bg-black/50 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all group"
                                     >
-                                        <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 mb-4">
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 mb-4 group-hover:bg-cyan-500 group-hover:text-black transition-all">
                                             <Icon size={24} />
                                         </div>
                                         <h4 className="text-lg font-semibold mb-2 text-white">{feature.title}</h4>
