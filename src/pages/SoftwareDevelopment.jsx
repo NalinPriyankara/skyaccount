@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Shield, Zap, Layers } from "lucide-react";
 import PageCover from "../components/PageCover";
-import ind_02 from "../assets/ind_03.jpg";
+import product_2 from "../assets/product_2.jpg";
 
 /* -------------------- Animations -------------------- */
 const fadeUp = {
@@ -72,7 +72,7 @@ export default function SoftwareDevelopment() {
 
                                 <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
                                     Custom <br />
-                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Software Architecture</span>
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-4"><span className="pr-4">Software</span> Architecture</span>
                                 </h2>
 
                                 <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
@@ -97,9 +97,10 @@ export default function SoftwareDevelopment() {
                                 className="relative group"
                             >
                                 <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]">
+                                {/* <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]"> */}
+                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[320px] sm:h-[384px] md:h-[432px]">
                                     <img
-                                        src={ind_02}
+                                        src={product_2}
                                         alt="Software Development"
                                         className="w-full h-full object-cover brightness-75 hover:grayscale-0 hover:scale-105 transition-all duration-1000"
                                     />
@@ -137,9 +138,9 @@ export default function SoftwareDevelopment() {
                                         whileInView="visible"
                                         viewport={{ once: false, margin: "-10%" }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="bg-black/50 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all"
+                                        className="bg-black/50 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all group"
                                     >
-                                        <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 mb-4">
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 mb-4 group-hover:bg-cyan-500 group-hover:text-black transition-all">
                                             <Icon size={24} />
                                         </div>
                                         <h4 className="text-lg font-semibold mb-2 text-white">{feature.title}</h4>
