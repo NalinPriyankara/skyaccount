@@ -1,0 +1,185 @@
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Headset, Clock, Shield, TrendingUp } from "lucide-react";
+import PageCover from "../components/PageCover";
+import ind_05 from "../assets/maintenance.jpg";
+
+/* -------------------- Animations -------------------- */
+const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: "easeOut" },
+    },
+};
+
+const features = [
+  {
+    title: "Responsive Support",
+    description: "Timely technical assistance when issues arise.",
+    icon: Clock,
+  },
+  {
+    title: "Preventive Maintenance",
+    description: "Routine checks and updates to improve system stability.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Security Best Practices",
+    description: "Support focused on protecting systems and data.",
+    icon: Shield,
+  },
+  {
+    title: "Expert Assistance",
+    description: "Guidance from experienced developers and engineers.",
+    icon: Headset,
+  },
+];
+
+export default function SupportAndMaintenance() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
+    return (
+        <>
+            <title>Support & Maintenance | Sky Smart Intelligence - 24/7 Technical Services</title>
+            <meta name="description" content="Reliable support and maintenance services: 24/7 global technical assistance to keep your systems running smoothly." />
+            <link rel="canonical" href="https://skyaccount.perahara.lk/services/support-maintenance" />
+
+            {/* Page Cover */}
+            <PageCover title="Support & Maintenance" />
+
+            <div className="bg-transparent text-white">
+                {/* Hero Section */}
+                <section className="py-24 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full -z-10" />
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full -z-10" />
+
+                    <div className="container mx-auto px-6">
+                        <div className="grid lg:grid-cols-2 gap-20 items-center">
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: false, margin: "-10%" }}
+                                variants={fadeUp}
+                            >
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="flex gap-1">
+                                        {[1, 2].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />)}
+                                    </div>
+                                    <span className="text-cyan-400 tracking-[0.4em] text-[10px] font-black uppercase">
+                                        Technical Support [EST-2026]
+                                    </span>
+                                </div>
+
+                                <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
+                                    Systems That <br />
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Run Smoothly</span>
+                                </h2>
+
+                                <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
+                                    Reliable support and technical maintenance services designed to keep your systems secure, stable, and operating efficiently.
+                                </p>
+
+                                <motion.a
+                                    href="/company/contact"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+                                >
+                                    Get Support <ArrowRight size={18} className="text-cyan-400" />
+                                </motion.a>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: false, margin: "-10%" }}
+                                transition={{ duration: 1 }}
+                                className="relative group"
+                            >
+                                <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]">
+                                    <img
+                                        src={ind_05}
+                                        alt="Support & Maintenance"
+                                        className="w-full h-full object-cover brightness-75 hover:grayscale-0 hover:scale-105 transition-all duration-1000"
+                                    />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features Section */}
+                <section className="py-16 bg-transparent">
+                    <div className="max-w-6xl mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, margin: "-10%" }}
+                            variants={fadeUp}
+                            className="text-center mb-16"
+                        >
+                            <span className="text-cyan-400 font-bold tracking-[0.4em] text-[10px] uppercase block mb-4">Our Services</span>
+                            <h3 className="text-3xl md:text-4xl font-black mb-4">Comprehensive Support</h3>
+                            <p className="text-gray-400 max-w-3xl mx-auto">
+                                From proactive maintenance to responsive technical assistance, we help ensure your systems remain operational and dependable.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {features.map((feature, index) => {
+                                const Icon = feature.icon;
+                                return (
+                                    <motion.div
+                                        key={index}
+                                        variants={fadeUp}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: false, margin: "-10%" }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="bg-black/50 border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all"
+                                    >
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 mb-4">
+                                            <Icon size={24} />
+                                        </div>
+                                        <h4 className="text-lg font-semibold mb-2 text-white">{feature.title}</h4>
+                                        <p className="text-gray-400 text-sm">{feature.description}</p>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </section>
+
+                {/* CTA Section */}
+                <section className="py-24 bg-transparent text-white overflow-hidden">
+                    <motion.div
+                        className="max-w-4xl mx-auto text-center px-6"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, margin: "-10%" }}
+                    >
+                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                            Need Technical Support?
+                        </h3>
+                        <p className="text-gray-200 mb-8">
+                            Our team is ready to assist with maintaining and improving your systems.
+                        </p>
+                        <motion.a
+                            href="/company/contact"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-flex items-center gap-2 bg-transparent/5 border border-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-transparent/10 hover:border-cyan-500/50 transition-all shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
+                        >
+                            Contact Support <ArrowRight size={18} className="text-cyan-400" />
+                        </motion.a>
+                    </motion.div>
+                </section>
+            </div>
+        </>
+    );
+}

@@ -12,6 +12,8 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Service = lazy(() => import("./pages/Service"));
 const IoTDevelopment = lazy(() => import("./pages/IoTDevelopment"));
 const SoftwareDevelopment = lazy(() => import("./pages/SoftwareDevelopment"));
+const MobileAppDevelopment = lazy(() => import("./pages/MobileAppDevelopment"));
+const SupportAndMaintenance = lazy(() => import("./pages/SupportAndMaintenance"));
 
 const SignIn = lazy(() => import("./admin/SignIn"));
 const ResetPassword = lazy(() => import("./admin/ResetPassword"));
@@ -62,6 +64,8 @@ function App() {
           <Route path="/about" element={<PublicRoute><About /></PublicRoute>} />
           <Route path="/projects" element={<PublicRoute><Projects /></PublicRoute>} />
           <Route path="/services" element={<PublicRoute><Service /></PublicRoute>} />
+          <Route path="/mobile-app-development" element={<PublicRoute><MobileAppDevelopment /></PublicRoute>} />
+          <Route path="/support-maintenance" element={<PublicRoute><SupportAndMaintenance /></PublicRoute>} />
           <Route path="/iot-development" element={<PublicRoute><IoTDevelopment /></PublicRoute>} />
           <Route path="/software-development" element={<PublicRoute><SoftwareDevelopment /></PublicRoute>} />
           <Route path="/contact" element={<PublicRoute><Contact /></PublicRoute>} />
