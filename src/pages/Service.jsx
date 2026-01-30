@@ -44,21 +44,18 @@ const services = [
         title: "IoT Development",
         description: "End-to-end IoT ecosystems connecting physical assets to the digital cloud for real-time monitoring and automation.",
         icon: Cpu,
+        link: "/iot-development",
     },
     {
         title: "Software Development",
         description: "Custom software architectures designed for scalability, security, and seamless integration with existing workflows.",
         icon: Code2,
+        link: "/software-development",
     },
     {
         title: "Mobile App Development",
         description: "Intuitive, high-performance mobile applications that extend your business reach to every user's fingertips.",
         icon: Smartphone,
-    },
-    {
-        title: "All Technology Solution",
-        description: "Comprehensive IT consulting and holistic technology strategies to drive innovation across your entire organization.",
-        icon: Globe,
     },
     {
         title: "Support & Maintenance",
@@ -172,9 +169,11 @@ export default function Service() {
                     <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-6 mt-16">
                         {services.map((service, index) => {
                             const Icon = service.icon;
+                            const Component = service.link ? motion(Link) : motion.div;
                             return (
-                                <motion.div
+                                <Component
                                     key={index}
+                                    to={service.link}
                                     variants={fadeUp}
                                     initial="hidden"
                                     whileInView="visible"
@@ -194,7 +193,7 @@ export default function Service() {
                                     <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-200">
                                         {service.description}
                                     </p>
-                                </motion.div>
+                                </Component>
                             );
                         })}
                     </div>
