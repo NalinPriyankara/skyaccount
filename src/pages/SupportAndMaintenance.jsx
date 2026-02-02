@@ -52,12 +52,12 @@ export default function SupportAndMaintenance() {
 
             <div className="bg-transparent text-white">
                 {/* Hero Section */}
-                <section className="py-24 relative overflow-hidden">
+                <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen flex items-center justify-center py-24">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full -z-10" />
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 blur-[120px] rounded-full -z-10" />
 
-                    <div className="container mx-auto px-6">
-                        <div className="grid lg:grid-cols-2 gap-20 items-center">
+                    <div className="container mx-auto px-6 w-full">
+                        <div className="grid lg:grid-cols-2 gap-20 items-center lg:pl-16">
                             <motion.div
                                 initial="hidden"
                                 whileInView="visible"
@@ -100,7 +100,8 @@ export default function SupportAndMaintenance() {
                                 className="relative group"
                             >
                                 <div className="absolute -inset-4 bg-linear-to-r from-cyan-500/20 to-blue-600/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl h-[400px] sm:h-[480px] md:h-[540px]">
+                                <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl aspect-[4/3] md:aspect-square max-h-[440px] md:max-h-[540px]">
+                                    <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
                                     <img
                                         src={ind_05}
                                         alt="Support & Maintenance"
