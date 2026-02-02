@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Zap, Shield, BarChart3 } from "lucide-react";
 import PageCover from "../components/PageCover";
@@ -38,6 +38,9 @@ const features = [
 ];
 
 export default function IoTDevelopment() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
     return (
         <>
             <title>IoT Development | Sky Smart Intelligence - End-to-End IoT Solutions</title>
