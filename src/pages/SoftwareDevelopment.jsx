@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Code2, Shield, Zap, Layers } from "lucide-react";
 import PageCover from "../components/PageCover";
@@ -38,6 +38,9 @@ const features = [
 ];
 
 export default function SoftwareDevelopment() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
     return (
         <>
             <title>Software Development | Sky Smart Intelligence - Custom Software Solutions</title>
