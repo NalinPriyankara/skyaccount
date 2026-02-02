@@ -50,8 +50,9 @@ const Contact = () => {
       <PageCover title="Contact" />
 
       {/* Grid Layout for Info and Message */}
-      <div className="container mx-auto px-6 py-24">
-        <div className="grid lg:grid-cols-2 gap-24 items-start">
+      <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen flex items-center justify-center py-24">
+        <div className="container mx-auto px-6 w-full">
+          <div className="grid lg:grid-cols-2 gap-20 items-center lg:pl-16">
           
           {/* Left Column: Info Terminal */}
           <motion.div
@@ -196,20 +197,23 @@ const Contact = () => {
               </button>
             </form>
           </motion.div>
+          </div>
         </div>
+      </section>
 
+      <div className="container mx-auto px-6">
         {/* Location Section */}
-        <div className="mt-32">
+        <div className="mt-32 lg:pl-16">
              <div className="flex items-center gap-4 mb-12">
                 <div className="h-px w-12 bg-zinc-800"></div>
                 <h4 className="text-xs font-black tracking-[0.4em] text-zinc-500 uppercase">Geospatial_Node [SRI-01]</h4>
              </div>
              
              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false, margin: "-10%" }}
-                className="w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl relative grayscale hover:grayscale-0 transition-all duration-1000 group"
+               initial={{ opacity: 0, scale: 0.95 }}
+               whileInView={{ opacity: 1, scale: 1 }}
+               viewport={{ once: false, margin: "-10%" }}
+               className="w-full md:w-1/2 h-[400px] md:h-[500px] overflow-hidden rounded-[2.5rem] border border-white/5 shadow-2xl relative grayscale hover:grayscale-0 transition-all duration-1000 group"
              >
                 <div className="absolute inset-0 bg-cyan-500/5 pointer-events-none group-hover:opacity-0 transition-opacity z-10" />
                 <iframe
