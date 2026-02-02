@@ -114,6 +114,32 @@ export default function SoftwareDevelopment() {
                     </div>
                 </section>
 
+                {/* Description Section */}
+                <section className="py-20 bg-transparent">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, margin: "-10%" }}
+                            variants={fadeUp}
+                            className="text-center"
+                        >
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Custom Software</h3>
+                            <div className="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    Off-the-shelf solutions often don't align perfectly with your unique business processes and requirements. Custom software development allows you to build applications specifically tailored to your organization's needs, giving you a competitive advantage and eliminating unnecessary features that burden your workflow.
+                                </p>
+                                <p>
+                                    Our expert development team crafts scalable, secure, and maintainable software architectures that grow with your business. From concept to deployment and beyond, we ensure your applications are built on solid foundations using industry best practices and modern technologies.
+                                </p>
+                                <p>
+                                    Whether you need enterprise applications, cloud-based solutions, or legacy system modernization, we deliver software that drives innovation, improves efficiency, and maximizes your return on investment.
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* Features Section */}
                 <section className="py-16 bg-transparent">
                     <div className="max-w-6xl mx-auto px-6">

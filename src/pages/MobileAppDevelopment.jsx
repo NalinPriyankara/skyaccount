@@ -75,7 +75,7 @@ export default function MobileAppDevelopment() {
 
                                 <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
                                     Apps That <br />
-                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Connect & Engage</span>
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-3">Connect & Engage</span>
                                 </h2>
 
                                 <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
@@ -110,6 +110,32 @@ export default function MobileAppDevelopment() {
                                 </div>
                             </motion.div>
                         </div>
+                    </div>
+                </section>
+
+                {/* Description Section */}
+                <section className="py-20 bg-transparent">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, margin: "-10%" }}
+                            variants={fadeUp}
+                            className="text-center"
+                        >
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Mobile-First Strategy</h3>
+                            <div className="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    With over 6 billion mobile users worldwide, businesses can no longer ignore the mobile channel. Mobile apps provide direct access to your customers' pockets, enabling instant engagement, personalized experiences, and seamless transactions. A well-designed mobile app strengthens brand loyalty and opens new revenue opportunities.
+                                </p>
+                                <p>
+                                    Our mobile development team creates intuitive, responsive applications optimized for performance across iOS, Android, and web platforms. We combine user-centric design with robust architecture to deliver apps that users love and come back to repeatedly.
+                                </p>
+                                <p>
+                                    From concept through launch and ongoing updates, we ensure your app remains competitive, secure, and aligned with the latest platform capabilities and user expectations.
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
 

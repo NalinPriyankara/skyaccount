@@ -75,7 +75,7 @@ export default function SupportAndMaintenance() {
 
                                 <h2 className="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
                                     Systems That <br />
-                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic">Run Smoothly</span>
+                                    <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500 italic pr-4">Run Smoothly</span>
                                 </h2>
 
                                 <p className="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
@@ -110,6 +110,32 @@ export default function SupportAndMaintenance() {
                                 </div>
                             </motion.div>
                         </div>
+                    </div>
+                </section>
+
+                {/* Description Section */}
+                <section className="py-20 bg-transparent">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, margin: "-10%" }}
+                            variants={fadeUp}
+                            className="text-center"
+                        >
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Ongoing Support Matters</h3>
+                            <div className="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    Deploying software is just the beginning. To ensure your systems remain secure, performant, and aligned with evolving business needs, continuous support and maintenance are essential. Neglecting system health can lead to security vulnerabilities, performance degradation, and costly downtime.
+                                </p>
+                                <p>
+                                    Our comprehensive support and maintenance services provide proactive monitoring, timely updates, security patches, and expert assistance when issues arise. We help minimize system downtime, prevent costly failures, and extend the lifespan of your technology investments while keeping your infrastructure optimized and secure.
+                                </p>
+                                <p>
+                                    With 24/7 technical support and preventive maintenance strategies, you can focus on your core business while we ensure your systems run smoothly and reliably.
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
 
