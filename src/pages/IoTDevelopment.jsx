@@ -113,6 +113,32 @@ export default function IoTDevelopment() {
                     </div>
                 </section>
 
+                {/* Description Section */}
+                <section className="py-20 bg-transparent">
+                    <div className="max-w-4xl mx-auto px-6">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, margin: "-10%" }}
+                            variants={fadeUp}
+                            className="text-center"
+                        >
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why IoT Matters</h3>
+                            <div className="space-y-4 text-gray-300 leading-relaxed">
+                                <p>
+                                    In today's hyperconnected world, organizations are leveraging Internet of Things (IoT) technology to gain unprecedented insights into their operations. By instrumenting devices, systems, and processes with smart sensors and connectivity, businesses can collect vast amounts of real-time data and transform it into actionable intelligence.
+                                </p>
+                                <p>
+                                    Our IoT development services empower enterprises to build comprehensive ecosystems where physical assets communicate seamlessly with cloud platforms. From predictive maintenance and energy optimization to supply chain visibility and customer experience enhancement, IoT unlocks new revenue streams and operational efficiencies.
+                                </p>
+                                <p>
+                                    We specialize in architecting secure, scalable IoT solutions that handle millions of data points per second while maintaining enterprise-grade reliability and compliance with industry standards.
+                                </p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+
                 {/* Features Section */}
                 <section className="py-16 bg-transparent">
                     <div className="max-w-6xl mx-auto px-6">
