@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Smartphone, Users, Zap, Shield } from "lucide-react";
 import PageCover from "../components/PageCover";
-import ind_04 from "../assets/MobileApp.png";
+import ind_04 from "../assets/MobileApp.jpg";
 
 /* -------------------- Animations -------------------- */
 const fadeUp = {
