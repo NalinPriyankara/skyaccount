@@ -105,15 +105,15 @@ export default function Footer() {
                     <MapPin size={18} />
                 </div>
                 <span className="text-sm font-medium leading-relaxed mt-1">
-                    Tech Park III, Suite 402<br/>
-                    Innovation District, CA
+                    No. A/59, Hungampola, Moronthota,<br/>
+                    Kegalle, Sri Lanka
                 </span>
               </li>
               <li className="flex gap-4 items-center text-gray-400 group">
                 <div className="w-10 h-10 rounded-lg bg-transparent/5 flex items-center justify-center shrink-0 group-hover:text-cyan-400 transition-colors">
                     <Mail size={18} />
                 </div>
-                <span className="text-sm font-mono tracking-tighter group-hover:text-white transition-colors">ops@skysmart.tech</span>
+                <span className="text-sm font-mono tracking-tighter group-hover:text-white transition-colors">info@skysmart.lk</span>
               </li>
             </ul>
           </div>

@@ -123,16 +123,18 @@ export default function MobileAppDevelopment() {
                             variants={fadeUp}
                             className="text-center"
                         >
-                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Mobile-First Strategy</h3>
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">
+                            Why a Mobile-First Strategy
+                            </h3>
                             <div className="space-y-4 text-gray-300 leading-relaxed">
                                 <p>
-                                    With over 6 billion mobile users worldwide, businesses can no longer ignore the mobile channel. Mobile apps provide direct access to your customers' pockets, enabling instant engagement, personalized experiences, and seamless transactions. A well-designed mobile app strengthens brand loyalty and opens new revenue opportunities.
+                                    Mobile devices play a central role in how people interact with businesses today. A mobile-first approach allows organizations to reach users more effectively, deliver faster experiences, and improve accessibility across everyday touchpoints.
                                 </p>
                                 <p>
-                                    Our mobile development team creates intuitive, responsive applications optimized for performance across iOS, Android, and web platforms. We combine user-centric design with robust architecture to deliver apps that users love and come back to repeatedly.
+                                    Our mobile development team builds intuitive and responsive applications optimized for performance across Android, iOS, and modern web platforms. We focus on practical design, usability, and solid architecture to create apps that are reliable and easy to use.
                                 </p>
                                 <p>
-                                    From concept through launch and ongoing updates, we ensure your app remains competitive, secure, and aligned with the latest platform capabilities and user expectations.
+                                    From initial concept to deployment and ongoing updates, we help ensure your application stays secure, maintainable, and aligned with evolving platform standards and user expectations.
                                 </p>
                             </div>
                         </motion.div>

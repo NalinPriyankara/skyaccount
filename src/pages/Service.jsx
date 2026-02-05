@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
     Headset,
     ArrowRight,
@@ -67,6 +68,10 @@ const services = [
 ];
 
 export default function Service() {
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }, []);
+
     return (
         <>
             <title>Our Services | Sky Smart Intelligence - Industrial Automation & IoT</title>

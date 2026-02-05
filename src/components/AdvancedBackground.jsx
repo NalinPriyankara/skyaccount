@@ -90,7 +90,9 @@ const AdvancedBackground = () => {
     };
 
     const draw = (t = 0) => {
-      ctx.fillStyle = "#000508";
+      ctx.fillStyle = "#1E201E";
+      //ctx.fillStyle = "#000508";
+      //ctx.fillStyle = "#32012F";
       ctx.fillRect(0, 0, width, height);
 
       // 0. Ambient Floating Glows (Simple motion)
@@ -119,7 +121,7 @@ const AdvancedBackground = () => {
 
         // Dynamic Hue based on scroll
         const hueShift = (scrollY.current / 50) % 360;
-        ctx.fillStyle = `hsla(${190 + hueShift}, 80%, 60%, ${p.opacity * scale})`;
+        ctx.fillStyle = `hsla(${190 + hueShift}, 80%, 55%, ${p.opacity * scale})`;
         ctx.beginPath();
         ctx.arc(x, y, p.size * scale, 0, Math.PI * 2);
         ctx.fill();
@@ -138,7 +140,7 @@ const AdvancedBackground = () => {
         // Draw Diamond/Crystal Shape
         ctx.beginPath();
         ctx.lineWidth = 1;
-        ctx.strokeStyle = `hsla(${c.hue}, 80%, 50%, 0.15)`;
+        ctx.strokeStyle = `hsla(${c.hue}, 80%, 55%, 0.15)`;
         ctx.moveTo(0, -c.size);
         ctx.lineTo(c.size * 0.6, 0);
         ctx.lineTo(0, c.size);
@@ -149,7 +151,7 @@ const AdvancedBackground = () => {
         // Internal lines (Cyber grid look)
         ctx.beginPath();
         ctx.setLineDash([2, 5]);
-        ctx.strokeStyle = `hsla(${c.hue}, 80%, 50%, 0.1)`;
+        ctx.strokeStyle = `hsla(${c.hue}, 80%, 45%, 0.1)`;
         ctx.moveTo(-c.size * 0.6, 0);
         ctx.lineTo(c.size * 0.6, 0);
         ctx.moveTo(0, -c.size);
@@ -289,7 +291,7 @@ const AdvancedBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none bg-black"
+      className="fixed inset-0 z-0 pointer-events-none bg-slate-900"
     />
   );
 };
