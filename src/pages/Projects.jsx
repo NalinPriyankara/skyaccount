@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import PageCover from "../components/PageCover";
@@ -63,6 +63,10 @@ const projects = [
 ];
 
 const Projects = () => {
+  useEffect(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }, []);
+
   return (
     <div className="bg-transparent min-h-screen text-white">
       <title>Projects & Case Studies | Sky Smart Intelligence - Industrial IoT Portfolio</title>

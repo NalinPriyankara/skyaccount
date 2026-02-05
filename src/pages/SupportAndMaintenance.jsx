@@ -123,16 +123,18 @@ export default function SupportAndMaintenance() {
                             variants={fadeUp}
                             className="text-center"
                         >
-                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Ongoing Support Matters</h3>
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">
+                            Why Ongoing Support Matters
+                            </h3>
                             <div className="space-y-4 text-gray-300 leading-relaxed">
                                 <p>
-                                    Deploying software is just the beginning. To ensure your systems remain secure, performant, and aligned with evolving business needs, continuous support and maintenance are essential. Neglecting system health can lead to security vulnerabilities, performance degradation, and costly downtime.
+                                    Deploying software is just the beginning. To keep systems secure, stable, and aligned with changing business needs, ongoing support and maintenance play a critical role. Without regular care, applications and systems can face security risks, performance issues, and unexpected downtime.
                                 </p>
                                 <p>
-                                    Our comprehensive support and maintenance services provide proactive monitoring, timely updates, security patches, and expert assistance when issues arise. We help minimize system downtime, prevent costly failures, and extend the lifespan of your technology investments while keeping your infrastructure optimized and secure.
+                                    Our support and maintenance services focus on timely updates, security improvements, performance checks, and expert assistance when issues arise. We help reduce disruptions, address potential problems early, and ensure your technology continues to perform as intended.
                                 </p>
                                 <p>
-                                    With 24/7 technical support and preventive maintenance strategies, you can focus on your core business while we ensure your systems run smoothly and reliably.
+                                    With structured maintenance and responsive technical support, you can focus on your core business while we help keep your systems reliable and well-maintained.
                                 </p>
                             </div>
                         </motion.div>
