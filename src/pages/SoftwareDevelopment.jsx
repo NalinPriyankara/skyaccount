@@ -124,16 +124,18 @@ export default function SoftwareDevelopment() {
                             variants={fadeUp}
                             className="text-center"
                         >
-                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why Custom Software</h3>
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">
+                            Why Custom Software
+                            </h3>
                             <div className="space-y-4 text-gray-300 leading-relaxed">
                                 <p>
-                                    Off-the-shelf solutions often don't align perfectly with your unique business processes and requirements. Custom software development allows you to build applications specifically tailored to your organization's needs, giving you a competitive advantage and eliminating unnecessary features that burden your workflow.
+                                    Off-the-shelf software doesn’t always fit the way a business actually works. Custom software allows you to build applications around your specific processes, reducing unnecessary complexity and improving day-to-day efficiency.
                                 </p>
                                 <p>
-                                    Our expert development team crafts scalable, secure, and maintainable software architectures that grow with your business. From concept to deployment and beyond, we ensure your applications are built on solid foundations using industry best practices and modern technologies.
+                                    Our development team designs and builds secure, maintainable, and scalable software solutions tailored to your requirements. We focus on clean architecture, practical features, and long-term reliability rather than one-size-fits-all systems.
                                 </p>
                                 <p>
-                                    Whether you need enterprise applications, cloud-based solutions, or legacy system modernization, we deliver software that drives innovation, improves efficiency, and maximizes your return on investment.
+                                    Whether you need a web application, internal management system, API integration, or modernization of an existing system, we deliver software that supports growth and adapts as your needs evolve.
                                 </p>
                             </div>
                         </motion.div>

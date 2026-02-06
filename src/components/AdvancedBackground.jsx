@@ -92,7 +92,7 @@ const AdvancedBackground = () => {
     const draw = (t = 0) => {
       ctx.fillStyle = "#1E201E";
       //ctx.fillStyle = "#000508";
-      //ctx.fillStyle = "#32012F";
+      //ctx.fillStyle = "#192224";
       ctx.fillRect(0, 0, width, height);
 
       // 0. Ambient Floating Glows (Simple motion)

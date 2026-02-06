@@ -124,16 +124,18 @@ export default function IoTDevelopment() {
                             variants={fadeUp}
                             className="text-center"
                         >
-                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">Why IoT Matters</h3>
+                            <h3 className="text-3xl md:text-4xl font-black mb-6 text-white">
+                            Why IoT Matters
+                            </h3>
                             <div className="space-y-4 text-gray-300 leading-relaxed">
                                 <p>
-                                    In today's hyperconnected world, organizations are leveraging Internet of Things (IoT) technology to gain unprecedented insights into their operations. By instrumenting devices, systems, and processes with smart sensors and connectivity, businesses can collect vast amounts of real-time data and transform it into actionable intelligence.
+                                    The Internet of Things (IoT) enables devices, systems, and applications to communicate and share data more effectively. By connecting physical components with software platforms, organizations can improve visibility, automation, and control across their operations.
                                 </p>
                                 <p>
-                                    Our IoT development services empower enterprises to build comprehensive ecosystems where physical assets communicate seamlessly with cloud platforms. From predictive maintenance and energy optimization to supply chain visibility and customer experience enhancement, IoT unlocks new revenue streams and operational efficiencies.
+                                    Our IoT development services focus on building practical, connected solutions where sensors, microcontrollers, and software work together seamlessly. These systems help monitor conditions, collect useful data, and support informed decision-making.
                                 </p>
                                 <p>
-                                    We specialize in architecting secure, scalable IoT solutions that handle millions of data points per second while maintaining enterprise-grade reliability and compliance with industry standards.
+                                    We design IoT solutions with an emphasis on reliability, security, and scalability, ensuring they are maintainable, efficient, and adaptable as requirements evolve.
                                 </p>
                             </div>
                         </motion.div>
