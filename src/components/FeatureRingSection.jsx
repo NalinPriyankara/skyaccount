@@ -175,7 +175,7 @@ export default function FeatureRingSection() {
                     className="h-px bg-linear-to-r from-cyan-500/50 to-transparent mt-8 mb-8 origin-center lg:origin-left"
                 />
 
-                <p className="text-zinc-500 text-base md:text-lg font-medium leading-relaxed max-w-xl border-l md:border-l-0 lg:border-l border-white/10 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0">
+                <p className="text-zinc-400 text-base md:text-lg font-medium leading-relaxed max-w-xl border-l md:border-l-0 lg:border-l border-white/10 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0">
                     Powering businesses with <span className="text-white">practical, future-ready technology</span> by delivering reliable software, electronics, and IoT solutions tailored to real-world needs.
                 </p>
             </motion.div>
@@ -210,7 +210,7 @@ export default function FeatureRingSection() {
                             <h3 className={`text-lg md:text-xl font-black mb-1 transition-colors uppercase tracking-tight ${active === index ? "text-white" : "text-zinc-500 group-hover/item:text-zinc-300"}`}>
                                 {feature.title}
                             </h3>
-                            <p className="text-[10px] font-mono font-black uppercase tracking-[0.2em] text-cyan-500/40 mb-2">{feature.subtitle}</p>
+                            <p className="text-[10px] font-mono font-black uppercase tracking-[0.2em] text-cyan-500/60 mb-2">{feature.subtitle}</p>
                             
                             <AnimatePresence>
                                 {active === index && (
@@ -221,7 +221,7 @@ export default function FeatureRingSection() {
                                         className="overflow-hidden"
                                     >
                                         <div className="h-px w-8 bg-transparent/10 mb-4" />
-                                        <p className="text-zinc-400 text-sm leading-relaxed mb-4 max-w-md">
+                                        <p className="text-zinc-300 text-sm leading-relaxed mb-4 max-w-md">
                                             {feature.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
