@@ -53,10 +53,17 @@ export default function Footer() {
                Architecting the sovereign layer of industrial intelligence. We don't just automate; we evolve systems.
              </p>
              <div className="flex gap-4">
-                {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+                {[
+                  { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61577742085296' },
+                  { Icon: Twitter, href: 'https://twitter.com' },
+                  { Icon: Instagram, href: 'https://instagram.com' },
+                  { Icon: Linkedin, href: 'https://www.linkedin.com/company/sky-smart-technology-pvt-ltd/posts/?feedView=all' },
+                ].map(({ Icon, href }, i) => (
                   <motion.a 
                     key={i}
-                    href="#" 
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
                     whileHover={{ scale: 1.1, backgroundColor: "rgba(34,211,238,0.1)", borderColor: "rgba(34,211,238,0.4)" }}
                     className="w-12 h-12 bg-transparent/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-cyan-400 transition-all"
                   >

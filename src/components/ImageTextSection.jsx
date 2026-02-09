@@ -45,7 +45,7 @@ export default function ImageTextSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-10%" }}
             transition={{ delay: 0.3 }}
-            className="text-zinc-500 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto xl:mx-0 font-medium text-center xl:text-left"
+            className="text-zinc-400 text-base md:text-lg leading-relaxed mb-10 max-w-xl mx-auto xl:mx-0 font-medium text-center xl:text-left"
           >
             Transform standalone systems into a <span className="text-white">connected digital workflow</span>. 
             We design solutions that improve system visibility, simplify communication, and help teams respond faster to operational events.

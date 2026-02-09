@@ -119,7 +119,7 @@ export default function FeatureSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-base md:text-lg text-zinc-500 mb-12 leading-relaxed max-w-xl font-medium border-l-2 md:border-l-0 lg:border-l-2 border-white/5 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0 text-center lg:text-left"
+            className="text-base md:text-lg text-zinc-400 mb-12 leading-relaxed max-w-xl font-medium border-l-2 md:border-l-0 lg:border-l-2 border-white/5 pl-6 md:pl-0 lg:pl-8 mx-auto lg:mx-0 text-center lg:text-left"
           >
             We don’t just build technology; <span className="text-white">we make it practical</span> Sky Smart Technology connects software and electronic systems to deliver reliable, 
             scalable solutions through <span className="text-cyan-400">IoT and embedded system integration</span>.

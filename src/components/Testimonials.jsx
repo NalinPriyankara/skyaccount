@@ -96,7 +96,7 @@ export default function Testimonials() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="mt-6 text-zinc-500 font-medium text-sm max-w-lg border-l-2 border-cyan-500/30 pl-6"
+                    className="mt-6 text-zinc-400 font-medium text-sm max-w-lg border-l-2 border-cyan-500/30 pl-6"
                 >
                     Real-time operational feedback from global partners utilizing our 
                     proprietary neural optimization engine.
